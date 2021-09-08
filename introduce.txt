@@ -1,0 +1,83 @@
+React
+
+-> 2004년부터 리액트의 인기 급증,
+ Angular, Vue는 하락세
+
+리액트 컨셉, 구현사항
+
+React? : A library for creating user interface
+         Components
+
+리액트는 컴포넌트로 이루어져 있다.
+컴포넌트는 한 가지의 기능을 수행하는 UI단위
+-> independent, isolate, reusable
+
+React Application은 하나의 Component로 이루어짐
+-제일 상위 : Root
+Root > Navbar, Content
+Navbar > button, button
+Content > article ...
+
+컴포넌트 단위로 조립되는 어플리케이션
+
+React - > 컴포넌트도 트리 형식으로 이루어짐.
+              Root
+           ↙            ↘
+        Navbar            Content
+    ↙     ↓    ↘        ↙       ↓    ↘    
+ Logo  Button Button article article article
+
+ 컴포넌트는 로직과 state를 가지고 있어 coheesive(응집적) 하다.
+
+Component
+-> React에서 제공하는 Component를 상속
+State, render로 나뉨
+state: 데이터를 가진 오브젝트
+render : jsx, 사용자에게 ui를 표기하는 함수
+* state가 변경될 시 render가 자동으로 호출
+
+상위 Component가 render될 때 하위 Component의 render도
+호출 -> 사용자에게 업데이트된 내용을 보여줌
+ * 항상 호출될 경우 성능이 저하될 우려 -> Virtual DOM Tree로 해결
+
+ React Virtual DOM Tree
+ -> Component들이 메모리상에 보관,
+    Component render가 호출될 때 자식의 render가 호출되면
+    실질적인 업데이트 부분만 계산, DOM Tree에 한꺼번에 업데이트
+
+React
+Re-render the whole app on every update
+
+
+Tools
+
+git -  version 관리
+node - javascript runtime으로 실행하는 환경
+npm - package manager 라이브러리를 설치, 관리
+npx - npm과 다르게 설치하지않고 라이브러리를 실행
+yarn - facebook에서 만들어지는 package manager
+
+
+
+React_Tools
+create react-app name
+react-app : library
+-> git 설정도 자동으로 됌.
+yarn start 
+yarn eject -> 숨겨진 tool을 꺼내놓음 (다시 넣을 수 없음)
+webpack -> 코드를 모듈화해서 번들링하여 배포
+
+React
+- BABEL : javascript transcompiler
+  ES5+ -> older version 변환
+  TypeScript, JSX -> javascript
+  * 브라우저, 예전 브라우저가 이해할 수 있는 소스로 변환해주는 역할
+
+- WebPack : Bundling the code, JavaScript module bundler
+
+- ESLint : checking your code 
+
+- Jest : delightful JavaScript testing framework
+
+- PostCSS : expandable CSS libraries 
+            tool for transforming CSS wuth JavaScript
