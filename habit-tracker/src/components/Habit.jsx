@@ -13,13 +13,14 @@ class Habit extends Component {
         const count = this.state.count-1
         this.setState({count: count <0 ? 0: count})
     }
-
-
+    //props -> 부모 component에서 전달받은 properties는 
+    
     render() {
+        const {name,count} = this.props.habit;
         return (
-            <li className='habit'>
+            <li clas sName='habit'>
             <span className="habit-name">
-                Reading
+                {name}
             </span>
             <span className="habit-count">{this.state.count}</span>
             <button  className='habit-button habit-increase' onClick={this.handleIncrement}>

@@ -63,3 +63,9 @@ JSX는 한 가지의 태그로 감싸야 함
 	// 	<h1>Hello</h1>
 	// </div>
 	// -> 쓸데 없는 div tag 사용
+
+  React_event
+-> React에는 SyntheticEvents로 일반  DOM 요소에서 발생하는 event와는 조금 다름
+   브라우저에서 발생하는 이벤틀를 한단계 더 감싸서 component에 전달
+   브라우저에서 사용하는 기능들을 기본적으로 사용은 가능함.
+   
