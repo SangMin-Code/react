@@ -45,4 +45,21 @@ React-Dom
   *strictMode -> use strict 역할
    개발시에는 strict 되지만 배포시에는 영향없으므로 같이 배포해도 무관
 
-   
+
+JSX
+JSX가 있기 전에는 element 만들어 내용을 지정했어야 했음.
+디자이너, 개발자에게 간편하게 html로 사용할 수 없었으므로 불편
+직관적으로 html처럼 사용할 수 있게 만들어줌.
+HTML은 마크업 언어이지만 JSX는 엄밀히 말하면 자바스크립트코드
+바벨이 자바스크립트로 변환해줌
+형제 node를 사용할 수 없음.
+JSX는 한 가지의 태그로 감싸야 함
+
+	// React.Fragment를 사용않고 <></>를 사용해도 동일
+	// JSX는 다수의 태그를 return할 수 없다. 형제 노드가 있을 경우 묶어야함.
+	// JSX 코드 내에서는 javscript code 작성이 가능하다.
+	// <div>
+	// 	<h1>Hello</h1>
+	// 	<h1>Hello</h1>
+	// </div>
+	// -> 쓸데 없는 div tag 사용
