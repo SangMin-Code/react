@@ -1,0 +1,5 @@
+React는 state가 변할 때 모든 component를 render하지만
+state object의 변화는 setState 함수를 사용하지 않으면 React가
+감지할 수 없으므로 항상 setState를 사용해야한다.
+
+jsx에서 js를 부르기 위해서는 항상 {}를 사용해야함.
