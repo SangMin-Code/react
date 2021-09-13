@@ -3,3 +3,14 @@ state object의 변화는 setState 함수를 사용하지 않으면 React가
 감지할 수 없으므로 항상 setState를 사용해야한다.
 
 jsx에서 js를 부르기 위해서는 항상 {}를 사용해야함.
+
+
+-> React Handling Events
+DOM Event를 사용하는것과 비슷하지만 문법상 차이가 있다.
+jsx를 사용하므로 eventhandler로 function을 줘야함
+
+preventDefault를 하기 위해 false를 return하여 사용할 수 없고
+명시적으로 preventDefault()를 호출해야한다.
+
+props:
+컴포넌트 밖에서 주어지는 데이터
