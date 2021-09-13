@@ -2,7 +2,6 @@ import './app.css';
 import React, { Component } from 'react'
 import Habbits from './components/Habbits';
 import Navbar from './components/Navbar'
-import ResetBtn from './components/ResetBtn'
 
 
 class App extends Component {
@@ -14,12 +13,6 @@ class App extends Component {
 		]	
 	}
 	
-	
-	calTotalCount = (cnt)=>{
-		const totalCount = this.state.totalCount +cnt
-		this.setState({totalCount})
-	}
-
 	handleAdd = (name)=>{
 		const habits = [...this.state.habits,
 			{	
@@ -31,58 +24,36 @@ class App extends Component {
 		this.setState({habits})
 	}
 
-	addHabitList = (habitName)=>{
-		const newId = this.state.habits.reduce((acc,cur)=>{
-			console.log(cur.id)
-			return Math.max(acc,cur.id)
-		},0)+1
-		console.log(newId)
-		const newHabits = {
-			id:newId,
-			name:habitName,
-			count:0
-		}
-
-		const habits = [...this.state.habits,newHabits];
-
-		this.setState({habits})
-	}
-
 	handleIncrement = (habit)=>{
         console.log(`handleIncrement ${habit.name}`)
         const habits = [...this.state.habits];
         const index = habits.indexOf(habit);
         habits[index].count++;
         this.setState({habits})
-		this.calTotalCount(1);
 	}
 	
 	handleDecreament =(habit)=>{
 		console.log(`handleDecrement ${habit}`)       
         const habits = [...this.state.habits]
         const index = habits.indexOf(habit)
-		let totalCount = this.state.totalCount
-        if(totalCount >0 && habits[index].count){
-			habits[index].count--;
-			this.setState({habits})
-			this.calTotalCount(-1);
-		}
+        
+		habits[index].count>0 && habits[index].count--;
+		this.setState({habits})
 	}
 	
 	handleDelete =(habit)=>{
 		console.log(`handleDelete ${habit}`)
         const habits = this.state.habits.filter(item => item.id !== habit.id)
         this.setState({habits})
-		this.calTotalCount(-habit.count);
     }
 	
 	handleReset =()=>{
 		console.log(`handleReset`)
-		const habits = this.state.habits.map((item) => {
-			item.count=0
-			return item})
+		const habits = this.state.habits.map((habit) => {
+			habit.count=0
+			return habit;
+		})
 		this.setState({habits})
-		this.calTotalCount(-this.state.totalCount)
 	}
 
 	render() {
@@ -94,8 +65,8 @@ class App extends Component {
 				onDecrement={this.handleDecreament}
 				onDelete={this.handleDelete}
 				onAdd = {this.handleAdd}
+				onReset = {this.handleReset}
 				/>
-			<ResetBtn onReset = {this.handleReset}/>
 		</>
 		);
 	};
