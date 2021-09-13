@@ -5,6 +5,7 @@ class AddHabit extends Component {
     
     handleAdd = ()=>{
         this.props.onAdd(this.state.text)
+        this.setState({text:''})
     }
 
     handleChange =(e)=>{
@@ -16,7 +17,7 @@ class AddHabit extends Component {
     render() {
         return (
             <div className='addHabit'>
-                <input type="text" className="addHabitInput" onChange={this.handleChange}/>
+                <input type="text" className="addHabitInput" onChange={this.handleChange} value={this.state.text}/>
                 <button className ="addHabitBtn" onClick= {this.handleAdd}>Add</button>
             </div>
         );

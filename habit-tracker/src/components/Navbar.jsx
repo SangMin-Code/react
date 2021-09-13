@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 class Navbar extends Component {
     
     render() {
-        const totalCount = this.props.totalCount
         return (
-            <nav>
-              <span className="title">
+            <nav className="navbar">
+            <i className="navbar-logo fas fa-leaf"></i>
+              <span>
                 Habit Tracker
                 </span>  
-               <span className="habit-count">
-                {totalCount}
+               <span className="navbar-count">
+                {this.props.totalCount}
                 </span> 
             </nav>
         );
