@@ -14,3 +14,6 @@ preventDefault를 하기 위해 false를 return하여 사용할 수 없고
 
 props:
 컴포넌트 밖에서 주어지는 데이터
+
+
+* React에서 state를 직접 변경하는것은 좋지 않다.
