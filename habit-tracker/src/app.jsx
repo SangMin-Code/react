@@ -2,13 +2,11 @@ import './app.css';
 import React, { Component } from 'react'
 import Habbits from './components/Habbits';
 import Navbar from './components/Navbar'
-import AddHabit from './components/AddHabit'
 import ResetBtn from './components/ResetBtn'
 
 
 class App extends Component {
 	state = {
-		totalCount : 6,
 		habits:[
 			{id:1, name:'Reading',count:1},
 			{id:2, name:'Running',count:2},
@@ -20,6 +18,17 @@ class App extends Component {
 	calTotalCount = (cnt)=>{
 		const totalCount = this.state.totalCount +cnt
 		this.setState({totalCount})
+	}
+
+	handleAdd = (name)=>{
+		const habits = [...this.state.habits,
+			{	
+				id:Date.now(),
+				name,
+				count:0
+			},
+		]
+		this.setState({habits})
 	}
 
 	addHabitList = (habitName)=>{
@@ -80,11 +89,12 @@ class App extends Component {
 		return( 
 		<>
 			<Navbar totalCount = {this.state.habits.filter(item=>item.count >0).length}/>
-			<AddHabit onAdd  = {this.addHabitList}/>
 			<Habbits habits = {this.state.habits}
 				onIncreament={this.handleIncrement}
 				onDecrement={this.handleDecreament}
-				onDelete={this.handleDelete}/>
+				onDelete={this.handleDelete}
+				onAdd = {this.handleAdd}
+				/>
 			<ResetBtn onReset = {this.handleReset}/>
 		</>
 		);
