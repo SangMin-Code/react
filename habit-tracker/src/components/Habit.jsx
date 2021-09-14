@@ -5,6 +5,16 @@ class Habit extends PureComponent {
     // 단순한 component이기 때문에 state가 필요 없음.
     // 데이터 뿐 아니라 콜백함수도 전달받음
 
+    //Component가 사용자에게 보여질 때
+    componentDidMount(){
+        console.log(`habit : ${this.props.habit.name} mounted`)
+    }
+    
+    //Component 지워지기 전 
+    componentWillUnmount(){
+        console.log(`habit : ${this.props.habit.name} unmounted`)
+    }
+
     handleIncrement = ()=>{
         this.props.onIncreament(this.props.habit)
     } 
