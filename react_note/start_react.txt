@@ -68,4 +68,19 @@ JSX는 한 가지의 태그로 감싸야 함
 -> React에는 SyntheticEvents로 일반  DOM 요소에서 발생하는 event와는 조금 다름
    브라우저에서 발생하는 이벤틀를 한단계 더 감싸서 component에 전달
    브라우저에서 사용하는 기능들을 기본적으로 사용은 가능함.
-   
+
+
+* index strictmode - >react 가 두번씩 호출하면서 한번 호출시 잘못된 것을 검사
+개발할때만 보여지고 배포시에는 적용되지않음
+
+* React Component의 state가 변할 때 모든 Component가
+  reder가 됨에도 불구하고 성능이 좋은 이유?
+  -> DOM요소에 VDOM에서 실제 업데이트가 필요한 내용만 업데이트 되므로
+  Debuging시 DOM요소가 변화가 일어난다면 뭔가 잘못된 상태일 수 있음
+
+* 브라우저에서 Update되는 Component 확인방법
+  -> react Component setting의 hilightUpdate 체크
+  
+
+PureComponent
+

@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class HabitAddForm extends Component {
+class HabitAddForm extends PureComponent {
     
+    //PureComponent
+    //props와 state 최상위 데이터가 변하지않으면 render하지 않음
+    
+
     inputRef = React.createRef();
     formRef = React.createRef();
 
@@ -16,6 +20,7 @@ class HabitAddForm extends Component {
     // React 에서 createRef를 만들어서 원하는 react dom에 연결해서 사용
     
     render() {
+        console.log('addform')
         return (
             <form ref={this.formRef} className='add-form' onSubmit={this.onSubmit}>
                 <input

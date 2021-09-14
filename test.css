@@ -1,0 +1,21 @@
+ul {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid black;
+	justify-content: space-between;
+}
+
+li {
+	width: 118px;
+	padding: 5px;
+	text-align: center;
+	list-style-type: none;
+}
+
+@media screen and (max-width: 600px) {
+	ul {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid black;
+	}
+}
