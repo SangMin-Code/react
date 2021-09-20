@@ -80,7 +80,8 @@ JSX는 한 가지의 태그로 감싸야 함
 
 * 브라우저에서 Update되는 Component 확인방법
   -> react Component setting의 hilightUpdate 체크
-  
 
-PureComponent
+
+PureComponent, memo 
+=> Compnent의 state나 props에 변화가 없으면 render함수를 부르지 않음.
 

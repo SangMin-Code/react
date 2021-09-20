@@ -1,4 +1,4 @@
-import React, { PureComponent,memo } from 'react';
+import React, { memo } from 'react';
 
 
 //memo -> pureComponent 처럼사용
