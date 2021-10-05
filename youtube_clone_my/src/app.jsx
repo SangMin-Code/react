@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from "react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import VideoList from "./components/video_list/VideoList";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faYoutube} from '@fortawesome/free-brands-svg-icons';
@@ -23,7 +23,7 @@ function App(){
 		console.log('useEffect');
 	},[]);
 
-	const inputRef = createRef()
+	const inputRef = useRef()
 
 	const onClick = (e)=>{
 		const word = inputRef.current.value;
@@ -34,9 +34,9 @@ function App(){
 		  };
 	   
 		  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${word}}&key=`, requestOptions)
-		  .then(response => response.json())
-		  .then(result => setVideos(result.items))
-		  .catch(error => console.log('error', error));
+			.then(response => response.json())
+			.then(result => setVideos(result.items))
+			.catch(error => console.log('error', error));
 
 	}
 
