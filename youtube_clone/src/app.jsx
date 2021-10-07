@@ -48,7 +48,6 @@ function App({youtube}) {
 						onVideoClick={selectVideo} 
 						display = {selectedVideo ? 'list' :'grid'} />;
 				</div>
-
 			</section>
 		</div>
 	)

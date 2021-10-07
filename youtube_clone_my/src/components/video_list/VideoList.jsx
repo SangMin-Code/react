@@ -3,10 +3,11 @@ import styles from '../../css/video_list/videoList.module.css'
 
 
 
-const VideoList = (props) => {
+const VideoList = ({videos,onVideoClick,display }) => {
+    
     return (
         <ul className = {styles.videoList}>
-           {props.videos.map((video)=><VideoItem key={video.id} video={video} />)} 
+           {videos.map((video)=><VideoItem key={video.id} video={video} onVideoClick={onVideoClick} display ={display}/>)} 
         </ul>
     );
 };
