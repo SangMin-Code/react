@@ -3,8 +3,10 @@ import styles from './video_item.module.css'
 //props를 deconstructing
 // props 안의 video를 받음 {video:newName}
 // props 안의 video 아느이 snippet을 deconstructing
-const VideoItem = ({video : {snippet}})=>
-    <li className = {styles.container}>
+const VideoItem = ({video,video : {snippet},onVideoClick,display})=>{
+    const displayType = display === 'list' ? styles.list : styles.grid;
+    return (
+    <li className = {`${styles.container} ${displayType}`} onClick={()=>onVideoClick(video)}>
         <div className={styles.video}>
             <img className = {styles.thumbnail}
             src={snippet.thumbnails.medium.url} 
@@ -16,6 +18,6 @@ const VideoItem = ({video : {snippet}})=>
             </div>
          </div>
     </li>
-;
-
+);
+};
 export default VideoItem;
