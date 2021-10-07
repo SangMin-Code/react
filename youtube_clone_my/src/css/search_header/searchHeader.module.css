@@ -1,0 +1,39 @@
+.searchbar {
+	font-size: 2em;
+	display: flex;
+	align-items: center;
+}
+
+.logobox {
+	padding: 0.2em;
+	margin-right: 0.5em;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.logoIcon {
+	color: red;
+	margin-left: 0.5em;
+	margin-right: 0.2em;
+}
+
+.logoTitle {
+}
+
+.searchInput {
+	outline: 0;
+	padding: 0.15em;
+	font-size: 0.7em;
+	flex-basis: 100%;
+}
+
+.searchIcon {
+	color: darkslategray;
+	margin-left: 0.3em;
+	transition: transform 200ms ease-in-out;
+}
+
+.searchIcon:hover {
+	transform: scale(1.1);
+}
