@@ -9,7 +9,7 @@ class Youtube {
 
 	async mostPopular() {
 		return fetch(
-			`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&regionCode=KR&key=${this.key}`,
+			`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&type=video&regionCode=KR&key=${this.key}`,
 			this.getRequestOptions
 		)
 			.then((response) => response.json())
@@ -19,7 +19,7 @@ class Youtube {
 
 	async search(query) {
 		return fetch(
-			`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}}&key=${this.key}`,
+			`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&q=${query}}&key=${this.key}`,
 			this.getRequestOptions
 		)
 			.then((response) => response.json())

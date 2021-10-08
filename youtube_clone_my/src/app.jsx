@@ -21,6 +21,7 @@ function App({youtube}){
 	}
 
 	const onSearch = (query)=>{
+		setSelectedVideo(null);
 		youtube.search(query)
 		.then(videos =>setVideos(videos))
 	}
