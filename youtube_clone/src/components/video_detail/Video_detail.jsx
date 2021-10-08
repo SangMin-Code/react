@@ -5,12 +5,13 @@ const Video_detail = ({video}) =>(
     <section className={styles.detail}>
         <iframe 
             className={styles.detail}
+            title='youtube video player'
             id="ytplayer" 
             type="text/html" 
             width="100%" 
             height="500px"
             src={`https://www.youtube.com/embed/${video.id}`}
-            frameborder="0"
+            frameBorder="0"
             allowFullScreen
             ></iframe>
             <h2 className={video.snippet.title}></h2>
