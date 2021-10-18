@@ -1,0 +1,32 @@
+.container {
+	width: 50%;
+	display: flex;
+}
+
+.thumbnail {
+	flex: 1 1 40%;
+	padding: 0.2em;
+}
+
+.videoContent {
+	flex: 1 1 60%;
+	padding: 0.8em;
+}
+
+.videoTitle {
+	font-size: 1.1em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.videoDescription {
+	font-size: 0.8em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
