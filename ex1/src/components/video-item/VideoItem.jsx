@@ -3,15 +3,15 @@ import styles from './videoItem.module.css'
 
 const VideoItem = ({video})=>{
     return (
-        <>
             <div className={styles.container}>
-                <img src={video.thumbnails.medium.url} alt="thumbnail" className={styles.thumbnail} />
-                <div className={styles.videoContent}>
-                    <span className={styles.videoTitle}>{video.title}</span>
-                    <span className={styles.videoDescription}>{video.description}</span>
+                <div className={styles.video}>
+                    <img src={video.thumbnails.medium.url} alt="thumbnail" className={styles.thumbnail} />
+                    <div className={styles.videoContent}>
+                        <span className={styles.videoTitle}>{video.title}</span>
+                        <span className={styles.videoDescription}>{video.description}</span>
+                    </div>
                 </div>
             </div>
-        </>
     )
 
 }
