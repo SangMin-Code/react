@@ -1,6 +1,12 @@
 .container {
 	width: 50%;
-	display: flex;
+	padding: 0.2em;
+}
+.container.grid {
+	width: 50%;
+}
+.container.list {
+	width: 100%;
 }
 
 .video {
@@ -24,13 +30,12 @@
 	padding: 0.2em;
 }
 
-.videoContent {
-	width: 40%;
-	padding: 0.8em;
+.metadata {
+	margin-left: 0.2em;
 }
 
-.videoTitle {
-	font-size: 1.1em;
+.title {
+	font-size: 1.1rem;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
@@ -38,11 +43,23 @@
 	-webkit-box-orient: vertical;
 }
 
-.videoDescription {
-	font-size: 0.8em;
+.channel {
+	font-size: 0.8rem;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+}
+
+.title,
+.channel {
+	margin: 0;
+	font-size: 0.8rem;
+}
+
+@media screen and (max-width: 780px) {
+	.container.grid {
+		width: 100%;
+	}
 }
