@@ -1,38 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import VideoHeader from './components/header/VideoHeader';
 import VideoList from './components/video-list/VideoList';
 import styles from './app.module.css'
 import VideoDetail from './components/video-detail/VideoDetail';
 
 
-function App() {
-	const key = process.env.REACT_APP_YOUTUBE_API_KEY;
+function App({youtube}) {
 	const [videos, setVideos] = useState([]);
 	const [video, setVideo] = useState(null);
 
-	const requestOptions = {
-		method: 'GET',
-		redirect: 'follow'
-	  };
-
+	const initVideos = useCallback(()=>{
+		youtube.mostPopular()
+		.then(videos => {
+			setVideos(videos)
+		})		
+	},[youtube])
+	
 	useEffect(()=>{
 		initVideos()
-	},[])
-	
-	const initVideos = ()=>{
-		fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&regionCode=KR&key=${key}`, requestOptions)
-		  .then(response => response.json())
-		  .then(result => setVideos(result.items))
-		  .catch(error => console.log('error', error));
-	}
+	},[youtube,initVideos])
 
-	const onSearch = (query) =>{		
-		fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&regionCode=KR&q=${query}&key=${key}`, requestOptions)
-		  .then(response => response.json())
-		  .then(result => result.items.map(video=>({...video,id:video.id.videoId})))
-		  .then(result => setVideos(result))
-		  .catch(error => console.log('error', error));
-	}
+	const onSearch = useCallback( query =>{
+		youtube.search(query)
+		.then(videos =>{
+			setVideos(videos)
+			setVideo(null);
+		})
+	},[youtube])
 
 	const onVideoClick = (video)=>{
 		setVideo(video)
