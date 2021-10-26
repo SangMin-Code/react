@@ -47,7 +47,8 @@ export default class FireBase {
 	googleSignOut() {
 		const auth = getAuth();
 		signOut(auth)
-			.then(() => {
+			.then((result) => {
+				console.log(result);
 				// Sign-out successful.
 			})
 			.catch((error) => {

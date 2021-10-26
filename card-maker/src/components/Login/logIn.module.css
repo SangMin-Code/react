@@ -1,13 +1,5 @@
-@value makerBlack from './common/colors.css';
-@value makerWhite from './common/colors.css';
-
-.app {
-	width: 40rem;
-	padding: 0;
-	margin: auto;
-	margin-top: 200px;
-	text-align: center;
-}
+@value makerBlack from '../../common/colors.css';
+@value makerWhite from '../../common/colors.css';
 
 .btnContainer {
 	background-color: makerWhite;

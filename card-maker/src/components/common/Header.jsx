@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './header.module.css'
 
-const Header = (props) => {
+const Header = ({token,logOut}) => {
+
+    const onClick = ()=>{
+        logOut()
+        alert('log out')
+
+    }
 
     return (
         <header className = {styles.header}>
@@ -11,9 +17,12 @@ const Header = (props) => {
                 alt="logo" 
                 /> 
             </div>
-            <button className = {styles.logOutBtn}>
+            {token &&
+                <button className = {styles.logOutBtn}
+                    onClick = {onClick}>
                 LogOut
-            </button>
+                </button>
+            }
             <h2 className = {styles.title}>Business Card Maker</h2>
         </header>
     )
