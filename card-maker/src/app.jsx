@@ -2,17 +2,21 @@ import { useState } from 'react';
 import styles from './app.module.css';
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
-import {Switch,BrowserRouter,useHistory,Route} from 'react-router-dom';
+import {Switch,BrowserRouter,Route} from 'react-router-dom';
 import Login from './pages/Login'
 import CardMaker from './pages/CardMaker';
 
 function App({firebase}) {
 
 	const [token, setToken] = useState(null)
-
-	const signIn = ()=>{
-		const token = firebase.googleSignIn()
-		setToken(token)
+	
+	const signIn = async ()=>{
+		try {
+			const token = await firebase.googleSignIn();
+			setToken(token);
+		} catch (error) {
+			console.log(error)
+		}
 	}
 	const signOut = ()=>{
 		firebase.googleSignOut()
@@ -20,7 +24,7 @@ function App({firebase}) {
 	}
 	return (	
 		<BrowserRouter>	
-		<div className = {styles.app}>
+		<div className = {token==null ? styles.appLogin : styles.appMaker}>
 			<Header token ={token} logOut = {signOut}/>
 				<Switch>
 					<Route exact path ='/'>

@@ -1,10 +1,13 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import styles from './header.module.css'
 
 const Header = ({token,logOut}) => {
-
+    const history = useHistory()
+    
     const onClick = ()=>{
         logOut()
+        history.push('/')
         alert('log out')
 
     }

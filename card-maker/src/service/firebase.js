@@ -23,7 +23,7 @@ export default class FireBase {
 	async googleSignIn() {
 		const provider = new GoogleAuthProvider();
 		const auth = getAuth();
-		const token = await signInWithPopup(auth, provider)
+		return signInWithPopup(auth, provider)
 			.then((result) => {
 				// This gives you a Google Access Token. You can use it to access the Google API.
 				const credential =
@@ -41,14 +41,12 @@ export default class FireBase {
 				// 	GoogleAuthProvider.credentialFromError(error);
 				// ...
 			});
-		return token;
 	}
 
-	googleSignOut() {
+	async googleSignOut() {
 		const auth = getAuth();
 		signOut(auth)
 			.then((result) => {
-				console.log(result);
 				// Sign-out successful.
 			})
 			.catch((error) => {
