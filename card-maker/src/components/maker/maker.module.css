@@ -1,0 +1,23 @@
+@value makerGreen, makerLightPink, makerWhite from '../../common/colors.css';
+@value mediaQuery,minWidth from '../../common/size.css';
+
+.maker {
+	width: 80%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: makerWhite;
+}
+
+.content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@media screen and (max-width: mediaQuery) {
+	.content {
+		flex-direction: column;
+	}
+}

@@ -4,6 +4,8 @@ import { useHistory } from 'react-router';
 import styles from './maker.module.css'
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import CardMaker from './CardMaker'
+import CardPreview from './CardPreview'
 
 const Maker = ({authService}) => {
     const history = useHistory()
@@ -12,7 +14,6 @@ const Maker = ({authService}) => {
     }
 
     useEffect(()=>{
-        
         authService.onAuthChange(user =>{
             if(!user){
                 history.push('/')
@@ -23,6 +24,10 @@ const Maker = ({authService}) => {
     return (
         <section className={styles.maker}>
             <Header onLogout = {onLogout}/>
+            <section className={styles.content}>
+                <CardMaker/>
+                <CardPreview/>
+            </section>
             <Footer/>
         </section>
     )

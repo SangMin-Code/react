@@ -1,0 +1,13 @@
+@value makerWhite from '../../common/colors.css';
+@value mediaQuery from '../../common/size.css';
+
+.cardMaker {
+	width: 50%;
+	background-color: makerWhite;
+}
+
+@media screen and (max-width: mediaQuery) {
+	.cardMaker {
+		width: 100%;
+	}
+}
