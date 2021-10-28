@@ -2,12 +2,12 @@
 @value mediaQuery from '../../common/size.css';
 
 .cardPreview {
-	width: 50%;
+	flex-basis: 50%;
 	background-color: makerWhite;
 }
 
-@media screen and (max-width: mediaQuery) {
-	.cardPreview {
-		width: 100%;
-	}
+.title {
+	width: 100%;
+	text-align: center;
+	font-size: 1.5em;
 }

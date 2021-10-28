@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import styles from './login.module.css'
+import styles from './logIn.module.css'
 import { useHistory } from 'react-router';
 
 
