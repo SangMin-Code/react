@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import styles from './maker.module.css'
 import Header from '../header/Header';
@@ -12,6 +12,38 @@ const Maker = ({authService}) => {
     const onLogout = ()=>{
         authService.logout();
     }
+    const [data, setData] = useState([
+        {   
+            'name':'Ellie',
+            'company':'Samsung',
+            'theme':'Dark',
+            'job':'SoftWare Engineer',
+            'email':'dreamcode@gmail.com',
+            'comment':'hello',
+            'profile':'/images/default_logo.png',
+            'key':'1',
+        },{
+            'name':'Bob',
+            'company':'Uber',
+            'theme':'Colorful',
+            'job':'SoftWare Engineer',
+            'email':'dreamcode@gmail.com',
+            'comment':'hello',
+            'profile':'/images/default_logo.png',
+            'key':'2',
+        },{
+            'name':'Ellie',
+            'company':'Google',
+            'theme':'Light',
+            'job':'SoftWare Engineer',
+            'email':'dreamcode@gmail.com',
+            'comment':'hello',
+            'profile':'/images/default_logo.png',
+            'key':'3',
+        }
+    ])
+    
+    
 
     useEffect(()=>{
         authService.onAuthChange(user =>{
@@ -25,8 +57,8 @@ const Maker = ({authService}) => {
         <section className={styles.maker}>
             <Header onLogout = {onLogout}/>
             <section className={styles.content}>
-                <CardMaker/>
-                <CardPreview/>
+                <CardMaker data={data}/>
+                <CardPreview data={data}/>
             </section>
             <Footer/>
         </section>

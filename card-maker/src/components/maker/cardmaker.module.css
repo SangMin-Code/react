@@ -1,4 +1,4 @@
-@value makerWhite from '../../common/colors.css';
+@value makerWhite, makerBlack, makerGrey from '../../common/colors.css';
 @value mediaQuery from '../../common/size.css';
 
 .cardMaker {
@@ -10,4 +10,43 @@
 	width: 100%;
 	text-align: center;
 	font-size: 1.5em;
+}
+
+.grid {
+	display: flex;
+	flex-flow: row wrap;
+	border-top: 1px solid makerGrey;
+	border-left: 1px solid makerGrey;
+	margin-bottom: 1em;
+}
+.cell {
+	padding: 15px;
+	text-align: center;
+	border-bottom: 1px solid makerGrey;
+	border-right: 1px solid makerGrey;
+}
+
+.cell:nth-child(1) {
+	flex-basis: 33.33%;
+}
+.cell:nth-child(2) {
+	flex-basis: 33.33%;
+}
+.cell:nth-child(3) {
+	flex-basis: 33.33%;
+}
+.cell:nth-child(4) {
+	flex-basis: 50%;
+}
+.cell:nth-child(5) {
+	flex-basis: 50%;
+}
+.cell:nth-child(6) {
+	flex-basis: 100%;
+}
+.cell:nth-child(7) {
+	flex-basis: 50%;
+}
+.cell:nth-child(8) {
+	flex-basis: 50%;
 }
