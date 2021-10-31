@@ -2,7 +2,7 @@
 @value mediaQuery,minWidth from '../../common/size.css';
 
 .maker {
-	width: 80%;
+	width: 100%;
 	height: 100%;
 	text-align: center;
 	display: flex;

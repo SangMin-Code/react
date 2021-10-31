@@ -37,7 +37,7 @@ const Maker = ({authService}) => {
             'theme':'Light',
             'job':'SoftWare Engineer',
             'email':'dreamcode@gmail.com',
-            'comment':'hello',
+            'comment':'hello hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello',
             'profile':'/images/default_logo.png',
             'key':'3',
         }
