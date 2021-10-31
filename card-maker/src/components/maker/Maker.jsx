@@ -43,7 +43,9 @@ const Maker = ({authService}) => {
         }
     ])
     
-    
+    const [option,setOption] = useState([])
+
+    const options = ['Light','Dark','Colorful']
 
     useEffect(()=>{
         authService.onAuthChange(user =>{
@@ -57,7 +59,7 @@ const Maker = ({authService}) => {
         <section className={styles.maker}>
             <Header onLogout = {onLogout}/>
             <section className={styles.content}>
-                <CardMaker data={data}/>
+                <CardMaker data={data} options={options}/>
                 <CardPreview data={data}/>
             </section>
             <Footer/>

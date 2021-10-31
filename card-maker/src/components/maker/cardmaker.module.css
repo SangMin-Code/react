@@ -1,9 +1,11 @@
-@value makerWhite, makerBlack, makerGrey from '../../common/colors.css';
+@value makerWhite, makerBlack, makerGrey,makerGreen,makerPink,makerLightPink,makerLightGrey from '../../common/colors.css';
 @value mediaQuery from '../../common/size.css';
 
 .cardMaker {
 	flex-basis: 50%;
 	background-color: makerWhite;
+	padding-left: 1em;
+	padding-right: 1em;
 }
 
 .title {
@@ -15,38 +17,64 @@
 .grid {
 	display: flex;
 	flex-flow: row wrap;
-	border-top: 1px solid makerGrey;
-	border-left: 1px solid makerGrey;
 	margin-bottom: 1em;
+	border-left: 1px solid makerGreen;
+	border-top: 1px solid makerGreen;
+	font-weight: bold;
 }
 .cell {
-	padding: 15px;
+	padding: 0.5em;
+	text-align: left;
+	border-bottom: 1px solid makerGreen;
+	border-right: 1px solid makerGreen;
+	overflow: auto;
+}
+.cell.name {
+	flex-basis: 33.33%;
+}
+.cell.company {
+	flex-basis: 33.33%;
+}
+.cell.theme {
+	flex-basis: 33.33%;
+	border-left: 0;
+	border-top: 0;
+	font-weight: bolder;
+}
+.cell.job {
+	flex-basis: 50%;
+}
+.cell.email {
+	flex-basis: 50%;
+}
+.cell.comment {
+	flex-basis: 100%;
+	font-weight: lighter;
+}
+.cell.profile {
 	text-align: center;
-	border-bottom: 1px solid makerGrey;
-	border-right: 1px solid makerGrey;
+	flex-basis: 50%;
+	background-color: makerPink;
+	color: makerWhite;
+	cursor: pointer;
+}
+.cell.profile:hover {
+	background-color: makerLightPink;
+	color: makerPink;
+}
+.cell.profile.noprofile {
+	background-color: makerLightGrey;
+	color: makerBlack;
 }
 
-.cell:nth-child(1) {
-	flex-basis: 33.33%;
-}
-.cell:nth-child(2) {
-	flex-basis: 33.33%;
-}
-.cell:nth-child(3) {
-	flex-basis: 33.33%;
-}
-.cell:nth-child(4) {
+.cell.delete {
+	border: 0;
 	flex-basis: 50%;
-}
-.cell:nth-child(5) {
-	flex-basis: 50%;
-}
-.cell:nth-child(6) {
-	flex-basis: 100%;
-}
-.cell:nth-child(7) {
-	flex-basis: 50%;
-}
-.cell:nth-child(8) {
-	flex-basis: 50%;
+	outline: none;
+	box-shadow: none;
+	text-align: center;
+	font-weight: bold;
+	background-color: makerGreen;
+	color: makerWhite;
+	cursor: pointer;
 }
