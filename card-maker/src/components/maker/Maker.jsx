@@ -4,8 +4,8 @@ import { useHistory } from 'react-router';
 import styles from './maker.module.css'
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import CardMaker from './CardMaker'
-import CardPreview from './CardPreview'
+import CardMaker from '../cardMaker/CardMaker'
+import CardPreview from '../cardPreivew/CardPreview'
 
 const Maker = ({authService}) => {
     const history = useHistory()
@@ -20,7 +20,8 @@ const Maker = ({authService}) => {
             'job':'SoftWare Engineer',
             'email':'dreamcode@gmail.com',
             'comment':'hello',
-            'profile':'/images/default_logo.png',
+            'fileName':'ellie',
+            'fileURL':null,
             'key':'1',
         },{
             'name':'Bob',
@@ -29,24 +30,22 @@ const Maker = ({authService}) => {
             'job':'SoftWare Engineer',
             'email':'dreamcode@gmail.com',
             'comment':'hello',
-            'profile':'/images/default_logo.png',
+            'fileName':'bob',
+            'fileURL':null,
             'key':'2',
         },{
-            'name':'Ellie',
+            'name':'Tom',
             'company':'Google',
             'theme':'Light',
             'job':'SoftWare Engineer',
             'email':'dreamcode@gmail.com',
             'comment':'hello hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello',
-            'profile':'/images/default_logo.png',
+            'fileName':'tom',
+            'fileURL':'tom.logo.png',
             'key':'3',
         }
     ])
     
-    const [option,setOption] = useState([])
-
-    const options = ['Light','Dark','Colorful']
-
     useEffect(()=>{
         authService.onAuthChange(user =>{
             if(!user){
@@ -59,7 +58,7 @@ const Maker = ({authService}) => {
         <section className={styles.maker}>
             <Header onLogout = {onLogout}/>
             <section className={styles.content}>
-                <CardMaker data={data} options={options}/>
+                <CardMaker data={data}/>
                 <CardPreview data={data}/>
             </section>
             <Footer/>

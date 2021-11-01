@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './cardpreview.module.css'
-import Card from './Card'
+import Card from '../card/Card'
 
 
-const CardPreview = ({data,options}) => {
+const CardPreview = ({data}) => {
     return (
         <div className={styles.cardPreview}>
             <h1 className={styles.title}>Card Preview</h1>
