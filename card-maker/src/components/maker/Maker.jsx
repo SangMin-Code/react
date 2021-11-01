@@ -6,6 +6,7 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import CardMaker from '../cardMaker/CardMaker'
 import CardPreview from '../cardPreivew/CardPreview'
+import Card from '../card/Card';
 
 const Maker = ({authService}) => {
     const history = useHistory()
@@ -46,6 +47,16 @@ const Maker = ({authService}) => {
         }
     ])
     
+    const cardAdd = (card)=>{
+        console.log(card)
+        setData([...data,card])
+    }
+
+    const cardDelete = (card)=>{
+        setData([...data.filter((d)=>{return d!==card})])
+    }
+
+
     useEffect(()=>{
         authService.onAuthChange(user =>{
             if(!user){
@@ -58,7 +69,7 @@ const Maker = ({authService}) => {
         <section className={styles.maker}>
             <Header onLogout = {onLogout}/>
             <section className={styles.content}>
-                <CardMaker data={data}/>
+                <CardMaker data={data} cardAdd={cardAdd} cardDelete={cardDelete}/>
                 <CardPreview data={data}/>
             </section>
             <Footer/>
