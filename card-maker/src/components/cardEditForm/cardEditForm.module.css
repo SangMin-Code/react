@@ -1,0 +1,49 @@
+@value makerWhite, makerGreen, makerBlack from '../../common/colors.css';
+
+.form {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	border-top: 1px solid makerBlack;
+	border-left: 1px solid makerBlack;
+	margin-bottom: 2em;
+}
+
+.fileInputContainer {
+	flex: 1 1 50%;
+	border-bottom: 1px solid makerBlack;
+}
+
+.name,
+.company,
+.theme,
+.job,
+.email,
+.comment {
+	font-size: 1em;
+	font-weight: bold;
+	padding: 0.3em;
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid makerBlack;
+	border-right: 1px solid makerBlack;
+}
+
+.name {
+	flex: 1 1 33.33%;
+}
+.company {
+	flex: 1 1 33.33%;
+}
+.theme {
+	flex: 1 1 33.33%;
+}
+.job {
+	flex: 1 1 50%;
+}
+.email {
+	flex: 1 1 50%;
+}
+.comment {
+	flex: 1 1 100%;
+}

@@ -6,7 +6,6 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import CardMaker from '../cardMaker/CardMaker'
 import CardPreview from '../cardPreivew/CardPreview'
-import Card from '../card/Card';
 
 const Maker = ({authService}) => {
     const history = useHistory()
@@ -15,6 +14,7 @@ const Maker = ({authService}) => {
     }
     const [data, setData] = useState([
         {   
+            'id':1,
             'name':'Ellie',
             'company':'Samsung',
             'theme':'Dark',
@@ -23,8 +23,8 @@ const Maker = ({authService}) => {
             'comment':'hello',
             'fileName':'ellie',
             'fileURL':null,
-            'key':'1',
         },{
+            'id':2,
             'name':'Bob',
             'company':'Uber',
             'theme':'Colorful',
@@ -33,8 +33,8 @@ const Maker = ({authService}) => {
             'comment':'hello',
             'fileName':'bob',
             'fileURL':null,
-            'key':'2',
         },{
+            'id':3,
             'name':'Tom',
             'company':'Google',
             'theme':'Light',
@@ -43,19 +43,19 @@ const Maker = ({authService}) => {
             'comment':'hello hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello',
             'fileName':'tom',
             'fileURL':'tom.logo.png',
-            'key':'3',
         }
     ])
     
-    const cardAdd = (card)=>{
-        console.log(card)
-        setData([...data,card])
+    const onAdd = (card)=>{
+        const update = [...data,card]
+        setData(update)
     }
 
-    const cardDelete = (card)=>{
-        setData([...data.filter((d)=>{return d!==card})])
+    const onDelete = (card)=>{
+        const update = data.filter((d)=>{return d!==card})
+        console.log(update)
+        setData(update)
     }
-
 
     useEffect(()=>{
         authService.onAuthChange(user =>{
@@ -69,7 +69,7 @@ const Maker = ({authService}) => {
         <section className={styles.maker}>
             <Header onLogout = {onLogout}/>
             <section className={styles.content}>
-                <CardMaker data={data} cardAdd={cardAdd} cardDelete={cardDelete}/>
+                <CardMaker data={data} onAdd={onAdd} onDelete={onDelete}/>
                 <CardPreview data={data}/>
             </section>
             <Footer/>

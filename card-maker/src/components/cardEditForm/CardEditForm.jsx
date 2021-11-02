@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import styles from './cardInputForm.module.css';
+import styles from './cardEditForm.module.css';
 import Button from '../button/Button';
 import FileInputButton from '../fileInputButton/FileInputButton';
 
-const CardInputForm = ({card,type,onBtn}) => {
+const CardEditForm = ({card,onDelete}) => {
     const { name,company,theme,job,email,comment,fileName,fileURL} = card 
     
     const nameRef = useRef()
@@ -13,21 +13,12 @@ const CardInputForm = ({card,type,onBtn}) => {
     const emailRef = useRef()
     const commentRef = useRef()
     
+    
     const onClick = (e)=>{
         e.preventDefault()
-        const newCard = {
-            name:nameRef.current.value,
-            company:companyRef.current.value,
-            theme:themeRef.current.value,
-            job:jobRef.current.value,
-            email:emailRef.current.value,
-            comment:commentRef.current.value,
-        }
-        type==='read' ? onBtn(card) : onBtn(newCard)
+        onDelete(card)
     }
 
-    const btnName = type ==='read' ? 'Delete' : 'Add'
-    
     return (
         <form className={styles.form}>
             <input ref={nameRef} className={styles.name} type="text" name="name" defaultValue={name} />
@@ -43,9 +34,9 @@ const CardInputForm = ({card,type,onBtn}) => {
             <div className={styles.fileInputContainer}>
                 <FileInputButton/>
             </div>
-            <Button name={btnName} onClick = {onClick}/>
+            <Button name='Delete' onClick = {onClick}/>
         </form>
     )
 };
 
-export default CardInputForm;
+export default CardEditForm;

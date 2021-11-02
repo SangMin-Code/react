@@ -1,29 +1,18 @@
 import React from 'react';
 import styles from './cardmaker.module.css'
-import CardInputForm from '../cardInputForm/CardInputForm'
+import CardEditForm from '../cardEditForm/CardEditForm'
+import CardAddForm from '../cardAddForm/CardAddForm';
 
-const CardMaker = ({data,cardAdd,cardDelete}) => {
-
-    const emptyCard ={
-        name:'',
-        company:'',
-        theme:'Dark',
-        job:'',
-        email:'',
-        comment:'',
-        fileName:'',
-        fileURL:''
-    }
-
+const CardMaker = ({data,onAdd,onDelete}) => {
 
     return (
         <div className={styles.cardMaker}>
             <h1 className={styles.title}>Card Maker</h1>
             <div className={styles.container}>
-                {data.map((card,index)=>(
-                    <CardInputForm card={card} key={index} type={'read'} onBtn={cardDelete}/>
+                {data.map((card)=>(
+                    <CardEditForm card={card} key={card.id} onDelete={onDelete}/>
                     ))}
-                <CardInputForm card ={emptyCard} type={'add'} onBtn={cardAdd}/>
+                <CardAddForm  onAdd={onAdd}/>
             </div>
         </div>
     )
