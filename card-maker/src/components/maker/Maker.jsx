@@ -57,6 +57,11 @@ const Maker = ({authService}) => {
         setData(update)
     }
 
+    const onEdit = (card)=>{
+        const update = data.map((d)=>(d.id===card.id ? card : d)) 
+        setData(update)   
+    }
+
     useEffect(()=>{
         authService.onAuthChange(user =>{
             if(!user){
@@ -65,11 +70,13 @@ const Maker = ({authService}) => {
         })
     })
 
+    
+
     return (
         <section className={styles.maker}>
             <Header onLogout = {onLogout}/>
             <section className={styles.content}>
-                <CardMaker data={data} onAdd={onAdd} onDelete={onDelete}/>
+                <CardMaker data={data} onAdd={onAdd} onDelete={onDelete} onEdit={onEdit}/>
                 <CardPreview data={data}/>
             </section>
             <Footer/>
