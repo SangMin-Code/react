@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef,useState } from 'react';
 import styles from './cardAddForm.module.css';
 import Button from '../button/Button';
 import FileInputButton from '../fileInputButton/FileInputButton';
 
-const CardAddForm = ({onAdd}) => {
+const CardAddForm = ({FileInput, onAdd}) => {
     
     const nameRef = useRef()
     const companyRef = useRef()
@@ -13,6 +13,7 @@ const CardAddForm = ({onAdd}) => {
     const commentRef = useRef()
     const formRef = useRef()
 
+    const [file,setFile]= useState({fileName:null,fileURL:null})
 
     const onClick = (e)=>{
         e.preventDefault()
@@ -25,14 +26,23 @@ const CardAddForm = ({onAdd}) => {
             job:jobRef.current.value || '',
             email:emailRef.current.value || '',
             comment:commentRef.current.value || '',
-            fileName:'',
-            fileURL:'',
+            fileName:file.fileName||'',
+            fileURL:file.fileURL||'',
         }
         
         formRef.current.reset();
+        setFile({fileName:null,fileURL:null})
 
         onAdd(newCard)
     }
+
+    const onFileChange =(file)=>{
+        setFile({
+            fileName:file.name,
+            fileURL:file.url
+        })
+    }
+
 
     return (
         <form ref={formRef} className={styles.form}>
@@ -47,7 +57,7 @@ const CardAddForm = ({onAdd}) => {
             <input ref={emailRef} className={styles.email} type="text" name="email" placeholder=''/>
             <textarea ref={commentRef} className={styles.comment} name="comment" placeholder=''></textarea>
             <div className={styles.fileInputContainer}>
-                <FileInputButton/>
+                <FileInput name={file.fileName} onFileChange ={onFileChange}/>
             </div>
             <Button name='Add' onClick = {onClick}/>
         </form>

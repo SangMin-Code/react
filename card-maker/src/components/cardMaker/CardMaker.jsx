@@ -3,20 +3,23 @@ import styles from './cardmaker.module.css'
 import CardEditForm from '../cardEditForm/CardEditForm'
 import CardAddForm from '../cardAddForm/CardAddForm';
 
-const CardMaker = ({data,onAdd,onDelete,onEdit}) => {
+const CardMaker = ({cards,onAdd,onDelete,onEdit,FileInput}) => {
 
     return (
         <div className={styles.cardMaker}>
             <h1 className={styles.title}>Card Maker</h1>
             <div className={styles.container}>
-                {data.map((card)=>(
-                    <CardEditForm 
-                        card={card} 
-                        key={card.id} 
+                {
+                    Object.keys(cards).map((key)=>(
+                        <CardEditForm 
+                        card={cards[key]} 
+                        key={key} 
                         onDelete={onDelete}
-                        onEdit = {onEdit} />
+                        onEdit = {onEdit}
+                        FileInput ={FileInput}
+                        />
                     ))}
-                <CardAddForm  onAdd={onAdd}/>
+                <CardAddForm  onAdd={onAdd} FileInput={FileInput}/>
             </div>
         </div>
     )

@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
 import styles from './cardEditForm.module.css';
 import Button from '../button/Button';
-import FileInputButton from '../fileInputButton/FileInputButton';
 
-const CardEditForm = ({card,onDelete,onEdit}) => {
+const CardEditForm = ({FileInput,card,onDelete,onEdit}) => {
     const { name,company,theme,job,email,comment,fileName,fileURL} = card 
     
     const nameRef = useRef()
@@ -13,16 +12,27 @@ const CardEditForm = ({card,onDelete,onEdit}) => {
     const emailRef = useRef()
     const commentRef = useRef()
     
-    
+    const onFileChange = (file)=>{
+        onEdit({
+            ...card,
+            fileName:file.name,
+            fileURL:file.url,
+        })
+    }
+
     const onClick = (e)=>{
-        e.preventDefault()
         onDelete(card)
     }
 
-    const editHandler = (e)=>{
-        const {name,value} = e.target
-        card[name] = value 
-        onEdit(card)
+    const editHandler = (event)=>{
+        if(event.currentTarget == null){
+            return;
+        }
+        event.preventDefault();
+        onEdit({
+            ...card,
+            [event.currentTarget.name]:event.currentTarget.value
+        })
     }
 
     return (
@@ -38,7 +48,7 @@ const CardEditForm = ({card,onDelete,onEdit}) => {
             <input ref={emailRef} onChange={editHandler} className={styles.email} type="text" name="email" defaultValue={email}/>
             <textarea ref={commentRef} onChange={editHandler} className={styles.comment} name="comment" defaultValue={comment}></textarea>
             <div className={styles.fileInputContainer}>
-                <FileInputButton/>
+                <FileInput name={fileName} onFileChange={onFileChange}/>
             </div>
             <Button name='Delete' onClick = {onClick}/>
         </form>

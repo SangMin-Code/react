@@ -3,8 +3,8 @@ import styles from './card.module.css';
 
 const DEFAULT_URL = '/images/default_logo.png'
 
-const Card = ({data}) => {
-    const {name,company,theme,job,email,comment,fileName,fileURL } = data
+const Card = ({card}) => {
+    const {name,company,theme,job,email,comment,fileName,fileURL } = card
     const url = fileURL || DEFAULT_URL;
 
     return (
