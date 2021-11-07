@@ -29,7 +29,6 @@ const CardAddForm = ({FileInput,onAdd}) => {
         };
         formRef.current.reset();
 
-        console.log(card,'hh')
         setFile({fileName:null,fileURL:null})
         onAdd(card);
     }
