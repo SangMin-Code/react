@@ -18,6 +18,16 @@ const Maker = ({FileInput,authService,cardRepository}) => {
     }
 
     useEffect(()=>{
+        if(!userId){
+            return
+        }
+        const stopSync = cardRepository.syncCards(userId,cards=>{
+            setCards(cards);
+        })
+        return ()=>stopSync();
+    },[userId]);
+
+    useEffect(()=>{
         authService.onAuthChange(user =>{
             if(user){
                 setUserId(user.uid);
@@ -55,7 +65,6 @@ const Maker = ({FileInput,authService,cardRepository}) => {
                     <Preview cards={cards}/>
                 </div>
             <Footer/>
-
         </section>
     )
 };
