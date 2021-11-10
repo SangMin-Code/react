@@ -6,55 +6,26 @@ import Footer from '../footer/Footer';
 import Editor from '../editor/Editor';
 import Preview from '../preview/Preview';
 
-const Maker = ({FileInput,authService}) => {
-    const [cards,setCards] = useState({
-        '1':{
-            id:'1',
-            name:'Ellie',
-            company:'Samsung',
-            title:'Software Engineer',
-            theme:'Light',
-            email:'ellie@gmail.com',
-            message:'go for it',
-            fileName:'ellie',
-            fileURL:null
-        },
-        2:{
-            id:'2',
-            name:'Bob',
-            company:'Uber',
-            title:'Software Engineer',
-            theme:'Dark',
-            email:'bob@gmail.com',
-            message:'go for it',
-            fileName:'bob',
-            fileURL:'bob.png'
-        },
-        3:{
-            id:'3',
-            name:'Mike',
-            company:'Google',
-            title:'Software Engineer',
-            theme:'Colorful',
-            email:'mike@gmail.com',
-            message:'go for it',
-            fileName:'mike',
-            fileURL:null
-        }
-    })
-
+const Maker = ({FileInput,authService,cardRepository}) => {
+    const history = useHistory();
+    const historyState = history?.location?.state;
+    const [cards,setCards] = useState({})
+    const [userId, setUserId] = useState(historyState && historyState.id);
     
     
-    const history = useHistory()
     const onLogout = ()=>{
         authService.logout();
     }
 
     useEffect(()=>{
         authService.onAuthChange(user =>{
-            if(!user){
-                history.push('/')
+            if(user){
+                setUserId(user.uid);
+                console.log(userId);
+            }else{
+                history.push('/');
             }
+
         })
     })
 
@@ -64,6 +35,7 @@ const Maker = ({FileInput,authService}) => {
             updated[card.id]=card;
             return updated;
         });
+        cardRepository.saveCard(userId,card);
     }
 
     const deleteCard = (card)=>{
@@ -72,6 +44,7 @@ const Maker = ({FileInput,authService}) => {
             delete updated[card.id];
             return updated;
         });
+        cardRepository.removeCard(userId,card);
     }
 
     return (
