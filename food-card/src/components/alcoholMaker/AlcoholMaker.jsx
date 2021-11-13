@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './alcoholMaker.module.css'
 
-
 const AlcoholMaker = (props) => {
 
     return(

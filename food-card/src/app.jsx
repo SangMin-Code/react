@@ -5,12 +5,12 @@ import AlcoholMaker from './components/alcoholMaker/AlcoholMaker';
 import FoodMaker from './components/foodMaker/FoodMaker';
 
 
-function App() {
+function App({authService}) {
 	return (
 		<BrowserRouter>
 			<Switch>
 				<Route exact path='/'>
-					<Login/>
+					<Login authService={authService}/>
 				</Route>
 				<Route exact path='/alcohol'>
 					<AlcoholMaker/>
