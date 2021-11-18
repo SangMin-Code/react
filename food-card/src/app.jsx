@@ -1,9 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import styles from './app.module.css';
 import Login from './components/login/Login';
-import AlcoholMaker from './components/alcoholMaker/AlcoholMaker';
-import FoodMaker from './components/foodMaker/FoodMaker';
-
+import CardMaker from './components/cardMaker/CardMaker';
 
 function App({authService}) {
 	return (
@@ -12,11 +10,8 @@ function App({authService}) {
 				<Route exact path='/'>
 					<Login authService={authService}/>
 				</Route>
-				<Route exact path='/alcohol'>
-					<AlcoholMaker/>
-				</Route>
-				<Route exact path='/food'>
-					<FoodMaker/>
+				<Route exact path='/cards'>
+					<CardMaker/>
 				</Route>
 			</Switch>
 		</BrowserRouter>
