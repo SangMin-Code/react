@@ -1,0 +1,30 @@
+@value jejuBlue,jejuWhite,jejuGreen,jejuBlack,jejuOrange,jejuGold from '../../common/colors.css';
+
+.header {
+	width: 100%;
+	text-align: center;
+	padding: 0.5em;
+	background-color: jejuGreen;
+	position: relative;
+}
+
+.logo {
+	width: 3em;
+}
+.title {
+	margin: 0;
+	color: jejuBlack;
+}
+
+.logout {
+	position: absolute;
+	right: 3em;
+	top: 1em;
+	padding: 0.8em;
+	border-radius: 20%;
+	background-color: jejuBlack;
+	color: jejuWhite;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+}

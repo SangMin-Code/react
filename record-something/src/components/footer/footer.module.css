@@ -1,0 +1,11 @@
+@value jejuWhite, jejuGreen, jejuBlack , jejuOrange from '../../common/colors.css';
+
+.footer {
+	width: 100%;
+	background-color: jejuBlack;
+	text-align: center;
+}
+
+.title {
+	color: jejuOrange;
+}
