@@ -3,7 +3,7 @@ import styles from './app.module.css';
 import Login from './components/login/Login';
 import RecordMaker from './components/recordMaker/RecordMaker';
 
-function App({authService}) {
+function App({authService,youtubeService}) {
 	return (
 		<div className={styles.app}>
 			<BrowserRouter>
@@ -12,7 +12,7 @@ function App({authService}) {
 						<Login authService={authService}/>
 					</Route>
 					<Route exact path='/records'>
-						<RecordMaker authService={authService}/>
+						<RecordMaker authService={authService} youtubeService={youtubeService}/>
 					</Route>
 				</Switch>
 			</BrowserRouter>
