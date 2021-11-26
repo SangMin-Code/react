@@ -1,8 +1,5 @@
 @value jejuBlue from './common/colors.css';
-
-* {
-	box-sizing: border-box;
-}
+@value minWidth from './common/size.css';
 
 .app {
 	width: 100%;
