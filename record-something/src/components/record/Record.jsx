@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from './record.module.css'
-const Record = ({record}) => {
+const Record = ({record,onTagClick}) => {
 
     const {title, comment, thumnail, tags} = record
+
+    const onClick = (tag)=>{
+        onTagClick(tag)
+    }
 
     return (
         <div className={styles.container}>
@@ -13,7 +17,7 @@ const Record = ({record}) => {
                 <h1 className={styles.title}>{title}</h1>
                 <p className={styles.comment}>{comment}</p>
                 <div className={styles.tags}>
-                    {tags.map((tag,index)=><div className={styles.tag} key={index}>{tag}</div>)}
+                    {tags.map((tag,index)=><div className={styles.tag} key={index} onClick={(event) => onClick(tag)}>{tag}</div>)}
                 </div>
             </div>
         </div>

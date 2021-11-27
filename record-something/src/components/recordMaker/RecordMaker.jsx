@@ -35,8 +35,9 @@ const RecordMaker = ({authService,youtubeService}) => {
 
     //records
     const onTagClick = (tag)=>{
+        console.log(tag)
         setSearchTag(tag);
-        search(tag)
+        // search(tag)
     }
 
     const records = [

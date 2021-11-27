@@ -3,12 +3,11 @@ import styles from './youtube.module.css';
 import YoutubeItem from '../youtubeItem/YoutubeItem';
 
 const Youtube = ({onClick,onSearch,youtubeList,searchTag}) => {
-    console.log(youtubeList)
-
+    
     return (
         <section className={styles.container}>
             <div className={styles.tagContainer}>
-                <input type='search' className={styles.input} defaultValue={searchTag}/>
+                <input type='search' className={styles.input} value={searchTag} />
                 <button className={styles.button}>search</button>
             </div>
             <div className={styles.itemContainer}>
