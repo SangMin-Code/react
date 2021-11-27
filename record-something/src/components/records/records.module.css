@@ -6,12 +6,18 @@
 	display: flex;
 	flex-wrap: wrap;
 	background-color: wheat;
+	border-right: 0.5em solid jejuBlack;
+	overflow-y: auto;
 }
 
 @media screen and (max-width: mediaQuery) {
 	.container {
 		flex-direction: column;
 		flex-wrap: nowrap;
-		flex: 100%;
+		flex: 60%;
+		border-right: none;
+	}
+	.container::-webkit-scrollbar {
+		display: none;
 	}
 }

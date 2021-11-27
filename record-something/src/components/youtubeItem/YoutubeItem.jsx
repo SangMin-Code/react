@@ -1,20 +1,24 @@
 import React from 'react';
 import styles from './youtubeItem.module.css'
 
-const YoutubeItem = ({item, onClick}) => {
-        const {thumnails,title,description,id} =item.snippet;
-        
+const YoutubeItem = ({item}) => {
+        const {thumbnails,title,description} =item.snippet;
+        const videoId = item.id.videoId;
+        const thumbnail = thumbnails.medium.url;
+
         const onClick = (event)=>{
-            window.open(`https://www.youtube.com/watch?v=${id.videoId}`)
+            window.open(`https://www.youtube.com/watch?v=${videoId}`)
         }
 
-        <div className={styles.container} onClick ={onClick}>
-            <img src="" alt="" className={styles.thumnails} />
-            <div className={styles.content}>
-                <h1 className={styles.title}>{title}</h1>
-                <p className={styles.description}>{description}</p>
+        return (
+            <div className={styles.container} onClick ={onClick}>
+                <img src={thumbnail} alt="thumbnail" className={styles.thumnails} />
+                <div className={styles.content}>
+                    <h1 className={styles.title}>{title}</h1>
+                    <p className={styles.description}>{description}</p>
+                </div>
             </div>
-        </div>
+        )
 };
 
 export default YoutubeItem;

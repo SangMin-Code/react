@@ -1,6 +1,8 @@
 @value jejuBlue,jejuWhite,jejuGreen,jejuBlack,jejuOrange,jejuGold from '../../common/colors.css';
 
 .header {
+	height: 10%;
+	min-height: 5.5em;
 	width: 100%;
 	text-align: center;
 	background-color: jejuGreen;

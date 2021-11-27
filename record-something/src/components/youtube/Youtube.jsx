@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './youtube.module.css';
+import YoutubeItem from '../youtubeItem/YoutubeItem';
 
 const Youtube = ({onClick,onSearch,youtubeList,searchTag}) => {
     console.log(youtubeList)
@@ -10,7 +11,9 @@ const Youtube = ({onClick,onSearch,youtubeList,searchTag}) => {
                 <input type='search' className={styles.input} defaultValue={searchTag}/>
                 <button className={styles.button}>search</button>
             </div>
-            {/* {youtubeList && youtubeList.map((item)=>(<youtubeItem item={item} onClick={onClick} key={item.id.videoId}/>))} */}
+            <div className={styles.itemContainer}>
+                {/* {youtubeList && youtubeList.map((item)=>(<YoutubeItem item={item} key={item.id.videoId}/>))} */}
+            </div>
         </section>
     )
 };

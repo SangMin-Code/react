@@ -1,0 +1,28 @@
+.container {
+	flex-basis: 20%;
+	display: flex;
+}
+
+.thumnails {
+	flex-basis: 40%;
+}
+
+.content {
+	flex-basis: 60%;
+}
+
+.title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+.description {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}

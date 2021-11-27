@@ -2,15 +2,15 @@
 @value mediaQuery from '../../common/size.css';
 
 .maker {
-	width: 100%;
+	width: 85%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	background-color: jejuWhite;
-	overflow: auto;
 }
 
 .container {
+	height: 85%;
 	display: flex;
 	flex: 1;
 }

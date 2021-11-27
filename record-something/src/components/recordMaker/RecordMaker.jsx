@@ -164,9 +164,6 @@ const RecordMaker = ({authService,youtubeService}) => {
         }
     ]
 
-
-
-
     // Youtube 
     const search = useCallback((query)=>{
         youtubeService.search(query)
@@ -175,7 +172,7 @@ const RecordMaker = ({authService,youtubeService}) => {
 
     // useEffect(()=>{
     //     search(searchTag)    
-    // })
+    // },[search,searchTag])
 
 
 
