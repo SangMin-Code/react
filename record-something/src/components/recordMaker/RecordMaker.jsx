@@ -182,7 +182,7 @@ const RecordMaker = ({authService,youtubeService}) => {
             <Header onLogout = {onLogout}/>
                 <div className={styles.container}>
                     <Records onTagClick = {onTagClick} records={records}/>
-                    <Youtube youtubeList={youtubeList} searchTag ={searchTag}/>
+                    <Youtube youtubeList={youtubeList} searchTag ={searchTag} onTagClick = {onTagClick} records={records}/>
                 </div>
             <Footer/>
         </section>

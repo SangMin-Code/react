@@ -2,6 +2,7 @@
 
 .footer {
 	height: 5%;
+	min-height: 1.5em;
 	width: 100%;
 	background-color: jejuBlack;
 	text-align: center;
