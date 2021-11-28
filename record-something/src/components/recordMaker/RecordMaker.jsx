@@ -5,6 +5,7 @@ import Footer from '../footer/Footer';
 import Records from '../records/Records';
 import Youtube from '../youtube/Youtube';
 import { useHistory } from 'react-router';
+import Button from '../Button/Button';
 
 const RecordMaker = ({authService,youtubeService}) => {    
 
@@ -171,11 +172,9 @@ const RecordMaker = ({authService,youtubeService}) => {
             .then(resoponse =>setYoutubeList(resoponse))
     },[youtubeService])
 
-    // useEffect(()=>{
-    //     search(searchTag)    
-    // },[search,searchTag])
-
-
+    useEffect(()=>{
+        search(searchTag)    
+    },[search,searchTag])
 
     return (
         <section className={styles.maker}>

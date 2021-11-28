@@ -19,7 +19,7 @@ const Youtube = ({onClick,onSearch,youtubeList,searchTag}) => {
                 <button className={styles.button}>search</button>
             </div>
             <div className={styles.itemContainer}>
-                {/* {youtubeList && youtubeList.map((item)=>(<YoutubeItem item={item} key={item.id.videoId}/>))} */}
+                {youtubeList && youtubeList.map((item)=>(<YoutubeItem item={item} key={item.id.videoId}/>))}
             </div>
         </section>
     )

@@ -1,0 +1,10 @@
+@value jejuGold,jejuBlue, jejuWhite, jejuGreen, jejuBlack,jejuOrange from '../../common/colors.css';
+@value mediaQuery from '../../common/size.css';
+
+.maker {
+	width: 85%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: jejuWhite;
+}

@@ -1,14 +1,28 @@
 .container {
 	flex-basis: 20%;
+	width: 97%;
 	display: flex;
+	margin-bottom: 0.5em;
+	padding: 0.2em;
+	cursor: pointer;
+	transition: all 300ms ease-in-out;
+	-webkit-box-shadow: 6px 8px 9px 5px rgba(221, 186, 119, 0.23);
+	box-shadow: 6px 8px 9px 5px rgba(221, 186, 119, 0.23);
+}
+
+.container:hover {
+	transform: scale(1.05);
 }
 
 .thumnails {
-	flex-basis: 40%;
+	flex-basis: 20%;
+	width: 10em;
+	margin-right: 1em;
 }
 
 .content {
-	flex-basis: 60%;
+	flex-basis: 80%;
+	width: 100%;
 }
 
 .title {
@@ -17,6 +31,7 @@
 	display: -webkit-box;
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
+	word-break: break-all;
 }
 
 .description {
@@ -25,4 +40,5 @@
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+	word-break: break-all;
 }

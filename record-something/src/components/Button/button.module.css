@@ -1,0 +1,9 @@
+.btn {
+	padding: 0.8em;
+	border-radius: 20%;
+	background-color: jejuBlack;
+	color: jejuWhite;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+}
