@@ -6,6 +6,7 @@ import Records from '../records/Records';
 import Youtube from '../youtube/Youtube';
 import { useHistory } from 'react-router';
 import Button from '../Button/Button';
+import AddForm from '../addForm/AddForm';
 
 const RecordMaker = ({authService,youtubeService}) => {    
 
@@ -18,6 +19,9 @@ const RecordMaker = ({authService,youtubeService}) => {
     
     const [searchTag, setSearchTag] = useState('제주맛집');
     const [youtubeList, setYoutubeList] = useState([]);
+
+    const [page, setPage]=useState('list');
+    const [btnName, setBtnName] =useState('add');
 
     const onLogout = useCallback(()=>{
         authService.logout();
@@ -36,9 +40,7 @@ const RecordMaker = ({authService,youtubeService}) => {
 
     //records
     const onTagClick = (tag)=>{
-        console.log(tag)
         setSearchTag(tag);
-        // search(tag)
     }
 
     const records = [
@@ -176,12 +178,33 @@ const RecordMaker = ({authService,youtubeService}) => {
         search(searchTag)    
     },[search,searchTag])
 
+
+    //addForm
+    const toAdd = ()=>{
+        setPage('add');
+        setBtnName('list');
+    }
+    const toList = ()=>{
+        setPage('list');
+        setBtnName('add');
+    }
+
     return (
         <section className={styles.maker}>
-            <Header onLogout = {onLogout}/>
+            <Header onLogout = {onLogout} toBtn={page==='list' ? toAdd : toList } btnName = {btnName} />
                 <div className={styles.container}>
-                    <Records onTagClick = {onTagClick} records={records}/>
-                    <Youtube youtubeList={youtubeList} searchTag ={searchTag} onTagClick = {onTagClick} records={records}/>
+                    {
+                        page==='list'&& (
+                            <>
+                            <Records onTagClick = {onTagClick} records={records}/>
+                            <Youtube youtubeList={youtubeList} searchTag ={searchTag} onTagClick = {onTagClick} records={records}/>
+                            </>
+                        )
+                    }
+                    {
+                        page==='add'&& <AddForm/>
+                    }
+                    
                 </div>
             <Footer/>
         </section>
