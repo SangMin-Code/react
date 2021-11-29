@@ -170,8 +170,8 @@ const RecordMaker = ({authService,youtubeService}) => {
 
     // Youtube 
     const search = useCallback((query)=>{
-        youtubeService.search(query)
-            .then(resoponse =>setYoutubeList(resoponse))
+        // youtubeService.search(query)
+        //     .then(resoponse =>setYoutubeList(resoponse))
     },[youtubeService])
 
     useEffect(()=>{
