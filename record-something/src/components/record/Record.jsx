@@ -4,6 +4,10 @@ const Record = ({record,onTagClick}) => {
 
     const {title, comment, thumnail, tags} = record
 
+    const onClick = (event)=>{
+        onTagClick(event.target.innerText)
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.imgContainer}>
@@ -17,9 +21,7 @@ const Record = ({record,onTagClick}) => {
                      (<div 
                             className={styles.tag} 
                             key={key} 
-                            onClick={
-                                onTagClick(tags[key].tag)
-                                    }
+                            onClick={onClick}
                         >
                         {tags[key].tag}
                     </div>))}
