@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 import Button from '../Button/Button';
 import AddForm from '../addForm/AddForm';
 
-const RecordMaker = ({authService,youtubeService}) => {    
+const RecordMaker = ({authService,youtubeService,recordRepository}) => {    
 
     // auth
     const history = useHistory();
@@ -41,6 +41,11 @@ const RecordMaker = ({authService,youtubeService}) => {
     //records
     const onTagClick = (tag)=>{
         setSearchTag(tag);
+    }
+
+    const createRecord = (record)=>{
+        recordRepository.saveReocrd(userId,record)
+        toList();
     }
 
     const records = [
@@ -202,7 +207,7 @@ const RecordMaker = ({authService,youtubeService}) => {
                         )
                     }
                     {
-                        page==='add'&& <AddForm/>
+                        page==='add'&& <AddForm createRecord={createRecord}/>
                     }
                     
                 </div>

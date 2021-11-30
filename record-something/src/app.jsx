@@ -4,7 +4,7 @@ import AddForm from './components/addForm/AddForm';
 import Login from './components/login/Login';
 import RecordMaker from './components/recordMaker/RecordMaker';
 
-function App({authService,youtubeService}) {
+function App({authService,youtubeService,recordRepository}) {
 	return (
 		<div className={styles.app}>
 			<BrowserRouter>
@@ -13,7 +13,11 @@ function App({authService,youtubeService}) {
 						<Login authService={authService}/>
 					</Route>
 					<Route exact path='/records'>
-						<RecordMaker authService={authService} youtubeService={youtubeService}/>
+						<RecordMaker 
+							authService={authService} 
+							youtubeService={youtubeService}
+							recordRepository={recordRepository}
+						/>
 					</Route>
 				</Switch>
 			</BrowserRouter>

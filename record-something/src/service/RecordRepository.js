@@ -22,3 +22,5 @@ class RecordRepository {
 		return () => off(recordRef);
 	}
 }
+
+export default RecordRepository;
