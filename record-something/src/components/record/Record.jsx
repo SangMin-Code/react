@@ -4,10 +4,6 @@ const Record = ({record,onTagClick}) => {
 
     const {title, comment, thumnail, tags} = record
 
-    const onClick = (tag)=>{
-        onTagClick(tag)
-    }
-
     return (
         <div className={styles.container}>
             <div className={styles.imgContainer}>
@@ -15,9 +11,18 @@ const Record = ({record,onTagClick}) => {
             </div>
             <div className={styles.description}>
                 <h1 className={styles.title}>{title}</h1>
-                {/* <p className={styles.comment}>{comment}</p> */}
+                <p className={styles.comment}>{comment}</p>
                 <div className={styles.tags}>
-                    {tags.map((tag,index)=><div className={styles.tag} key={index} onClick={(event) => onClick(tag)}>{tag}</div>)}
+                    {Object.keys(tags).map((key) =>
+                     (<div 
+                            className={styles.tag} 
+                            key={key} 
+                            onClick={
+                                onTagClick(tags[key].tag)
+                                    }
+                        >
+                        {tags[key].tag}
+                    </div>))}
                 </div>
             </div>
         </div>

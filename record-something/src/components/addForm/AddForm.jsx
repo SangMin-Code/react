@@ -1,4 +1,4 @@
-import {React,useState,useCallback,useEffect,useRef} from 'react';
+import {React,useRef} from 'react';
 import styles from './addForm.module.css';
 import Button from '../Button/Button';
 
@@ -11,14 +11,15 @@ const AddForm = ({createRecord}) =>{
     
     const onSubmit = (event)=>{
         event.preventDefault();
+        
         const record = {
                 id:Date.now(),
                 title:titleRef.current.value||'',
-                tags:tagsRef.current.value||'',
+                tags:convertTags(tagsRef.current.value)||'',
                 comment:commentRef.current.value||'',
                 address:addressRef.current.value||'',
         }
-        formRef.current.reset();
+        // formRef.current.reset();
         createRecord(record)
     }
     
@@ -50,5 +51,14 @@ const AddForm = ({createRecord}) =>{
     )
 
 };
+
+function convertTags (tags){
+        if(tags.indexOf('#') === -1){
+                return null
+        }
+        const tagList = tags.split('#')
+        const convert = tagList.filter((tag)=> tag!=='' ).map((tag)=>({tag}))
+        return JSON.stringify(convert)
+}
 
 export default AddForm;

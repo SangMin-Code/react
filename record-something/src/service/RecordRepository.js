@@ -17,7 +17,13 @@ class RecordRepository {
 		const recordRef = ref(this.db, `${userId}/records/`);
 		onValue(recordRef, (snapshot) => {
 			const value = snapshot.val();
-			value && onUpdate(value);
+			value &&
+				onUpdate(
+					Object.keys(value).map((key) => ({
+						...value[key],
+						tags: JSON.parse(value[key].tags),
+					}))
+				);
 		});
 		return () => off(recordRef);
 	}

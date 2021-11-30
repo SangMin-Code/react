@@ -1,6 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import styles from './app.module.css';
-import AddForm from './components/addForm/AddForm';
 import Login from './components/login/Login';
 import RecordMaker from './components/recordMaker/RecordMaker';
 
