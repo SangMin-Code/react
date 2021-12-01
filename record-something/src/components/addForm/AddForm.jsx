@@ -42,7 +42,7 @@ const AddForm = ({createRecord}) =>{
                     <input ref = {addressRef} type="text" name="address"/>
             </div>
             <div className={styles.inputContainer}>
-                    <label className={styles.label} >thumbnail</label> 
+                    <label className={styles.label} >썸네일</label> 
                     <input type="file" name='thumbnail'/>
             </div>
             <Button name={'Save'} onBtn={onSubmit} />
