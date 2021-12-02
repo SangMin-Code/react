@@ -10,12 +10,14 @@ import ImageUploader from './service/ImageUploader';
 import ThumbnailInput from './components/thumbnailInput/ThumbnailInput';
 
 const imageUploader = new ImageUploader();
+const youtubeAPI = process.env.REACT_APP_YOUTUBE_KEY;
+
 const ThumbnailFileInput = memo((props) => (
 	<ThumbnailInput {...props} imageUploader={imageUploader} />
 ));
 
 const authService = new AuthService(FirebaseApp);
-const youtubeService = new YoutubeService();
+const youtubeService = new YoutubeService(youtubeAPI);
 const recordRepository = new RecordRepository();
 
 ReactDOM.render(
