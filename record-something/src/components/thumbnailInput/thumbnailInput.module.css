@@ -1,0 +1,46 @@
+@value mediaQuery from '../../common/size.css';
+@value jejuGold,jejuBlue, jejuWhite, jejuGreen, jejuBlack,jejuOrange from '../../common/colors.css';
+
+.container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.input {
+	display: none;
+}
+
+.button {
+	cursor: pointer;
+	outline: none;
+	font-size: 1em;
+	margin-right: 1em;
+	border: 0;
+	outline: 0;
+	padding: 1em;
+}
+
+.thumbnail {
+	width: 200px;
+	height: 200px;
+}
+
+.loading {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 50%;
+	border: 2px solid jejuGold;
+	border-top: 3px solid jejuOrange;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

@@ -1,14 +1,16 @@
-import {React,useRef} from 'react';
+import {React,useRef, useState} from 'react';
 import styles from './addForm.module.css';
 import Button from '../Button/Button';
 
-const AddForm = ({createRecord}) =>{
+const AddForm = ({createRecord,ThumbnailFileInput}) =>{
     const titleRef = useRef();
     const tagsRef = useRef();
     const commentRef = useRef();
     const addressRef = useRef();
     const formRef = useRef(); 
+    const [file, setFile] = useState({fileName:null, fileURL:null})
     
+
     const onSubmit = (event)=>{
         event.preventDefault();
         
@@ -18,9 +20,19 @@ const AddForm = ({createRecord}) =>{
                 tags:convertTags(tagsRef.current.value)||'',
                 comment:commentRef.current.value||'',
                 address:addressRef.current.value||'',
+                fileName:file.fileName ||'',
+                fileURL:file.fileURL||'',
         }
         // formRef.current.reset();
+        // setFile({fileName:null,fileURL:null})
         createRecord(record)
+    }
+
+    const onFileChange =(file)=>{
+        setFile({
+            fileName:file.name,
+            fileURL:file.url
+        })
     }
     
         return(
@@ -43,11 +55,7 @@ const AddForm = ({createRecord}) =>{
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >썸네일</label> 
-                    <input type="file" name='thumbnail'/>
-            </div>
-            <div className={styles.thumnail}>
-                <h1>미리보기</h1>
-                <img src="" alt="" />
+                    <ThumbnailFileInput name={file.fileName} onFileChange ={onFileChange} />
             </div>
             <Button name={'Save'} onBtn={onSubmit} />
         </form>
