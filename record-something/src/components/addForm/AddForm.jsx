@@ -45,6 +45,10 @@ const AddForm = ({createRecord}) =>{
                     <label className={styles.label} >썸네일</label> 
                     <input type="file" name='thumbnail'/>
             </div>
+            <div className={styles.thumnail}>
+                <h1>미리보기</h1>
+                <img src="" alt="" />
+            </div>
             <Button name={'Save'} onBtn={onSubmit} />
         </form>
 

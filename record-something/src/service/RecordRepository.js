@@ -19,10 +19,13 @@ class RecordRepository {
 			const value = snapshot.val();
 			value &&
 				onUpdate(
-					Object.keys(value).map((key) => ({
-						...value[key],
-						tags: JSON.parse(value[key].tags),
-					}))
+					Object.keys(value).map(
+						(key) =>
+							value[key].tags && {
+								...value[key],
+								tags: JSON.parse(value[key].tags),
+							}
+					)
 				);
 		});
 		return () => off(recordRef);

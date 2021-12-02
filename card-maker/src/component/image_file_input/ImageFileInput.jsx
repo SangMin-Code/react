@@ -5,7 +5,7 @@ const ImageFileInput = memo(
   ({imageUploader,name,onFileChange}) => {
     const inputRef =useRef();
     const [loading,setLoading] = useState(false);  
-  
+
     const onButtonClick =(event)=>{
       event.preventDefault();
       inputRef.current.click();
@@ -15,6 +15,7 @@ const ImageFileInput = memo(
       setLoading(true);
       const uploaded =  await imageUploader.upload(event.target.files[0])
       setLoading(false);
+
       onFileChange({
         name:uploaded.original_filename,
         url:uploaded.url,

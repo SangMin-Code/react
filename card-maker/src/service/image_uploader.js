@@ -2,7 +2,7 @@ class ImageUploader {
 	async upload(file) {
 		const data = new FormData();
 		data.append('file', file);
-		data.append('upload_preset', 'kjlmh1l4');
+		data.append('upload_preset', 'qdtbqm0p');
 		const result = await fetch(
 			'https://api.cloudinary.com/v1_1/dxf74aval/image/upload',
 			{

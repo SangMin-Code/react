@@ -5,11 +5,12 @@ import Record from '../record/Record';
 const Records = ({records,onTagClick}) => {
     return(
         <section className = {styles.container}>
-            {Object.keys(records).map((key) =>
+            {records && (Object.keys(records).map((key) =>
                                  (<Record 
                                         record = {records[key]} 
                                         onTagClick={onTagClick} 
-                                        key = {key}/>))}
+                                        key = {key}/>))
+            )}
         </section>
     )
 };

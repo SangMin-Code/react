@@ -17,14 +17,15 @@ const Record = ({record,onTagClick}) => {
                 <h1 className={styles.title}>{title}</h1>
                 <p className={styles.comment}>{comment}</p>
                 <div className={styles.tags}>
-                    {Object.keys(tags).map((key) =>
+                    {tags && (Object.keys(tags).map((key) =>
                      (<div 
                             className={styles.tag} 
                             key={key} 
                             onClick={onClick}
                         >
                         {tags[key].tag}
-                    </div>))}
+                    </div>))
+                    )}
                 </div>
             </div>
         </div>

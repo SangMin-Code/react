@@ -7,10 +7,8 @@ import AuthService from './service/authService';
 import YoutubeService from './service/youtubeService';
 import RecordRepository from './service/RecordRepository';
 
-const APIkey = process.env.REACT_APP_YOUTUBE_KEY;
-
 const authService = new AuthService(FirebaseApp);
-const youtubeService = new YoutubeService(APIkey);
+const youtubeService = new YoutubeService();
 const recordRepository = new RecordRepository();
 ReactDOM.render(
 	<React.StrictMode>
