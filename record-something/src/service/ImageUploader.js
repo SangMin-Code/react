@@ -20,11 +20,11 @@ class ImageUploader {
 	}
 
 	async uploadfiles(files) {
-		console.log(files);
 		const filesInfo = [];
-		Object.keys(files).map(async (key) => {
+		const fileList = Object.values(files);
+		for await (const file of fileList) {
 			const data = new FormData();
-			data.append('file', files[key]);
+			data.append('file', file);
 			data.append('upload_preset', this.picturesPreset);
 			try {
 				const result = await fetch(
@@ -36,11 +36,10 @@ class ImageUploader {
 				);
 				const jsonResult = await result.json();
 				filesInfo.push(jsonResult);
-				console.log(jsonResult);
 			} catch (error) {
 				throw new Error(error);
 			}
-		});
+		}
 		return filesInfo;
 	}
 }
