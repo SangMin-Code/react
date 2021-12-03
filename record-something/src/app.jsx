@@ -3,7 +3,11 @@ import styles from './app.module.css';
 import Login from './components/login/Login';
 import RecordMaker from './components/recordMaker/RecordMaker';
 
-function App({authService,youtubeService,recordRepository,ThumbnailFileInput}) {
+function App({authService,
+		youtubeService,
+		recordRepository,
+		ThumbnailFileInput
+		,PicturesFileInput}) {
 	return (
 		<div className={styles.app}>
 			<BrowserRouter>
@@ -17,6 +21,7 @@ function App({authService,youtubeService,recordRepository,ThumbnailFileInput}) {
 							youtubeService={youtubeService}
 							recordRepository={recordRepository}
 							ThumbnailFileInput={ThumbnailFileInput}
+							PicturesFileInput={PicturesFileInput}
 						/>
 					</Route>
 				</Switch>

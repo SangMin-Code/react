@@ -2,7 +2,7 @@ import {React,useRef, useState} from 'react';
 import styles from './addForm.module.css';
 import Button from '../Button/Button';
 
-const AddForm = ({createRecord,ThumbnailFileInput}) =>{
+const AddForm = ({createRecord,ThumbnailFileInput,PicturesFileInput}) =>{
     const titleRef = useRef();
     const tagsRef = useRef();
     const commentRef = useRef();
@@ -56,6 +56,11 @@ const AddForm = ({createRecord,ThumbnailFileInput}) =>{
             <div className={styles.inputContainer}>
                     <label className={styles.label} >썸네일</label> 
                     <ThumbnailFileInput name={file.fileName} onFileChange ={onFileChange} />
+
+            </div>
+            <div className={styles.inputContainer}>
+                    <label className={styles.label} >사진</label> 
+                    <PicturesFileInput />
             </div>
             <Button name={'Save'} onBtn={onSubmit} />
         </form>

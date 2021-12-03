@@ -7,7 +7,9 @@ import Youtube from '../youtube/Youtube';
 import { useHistory } from 'react-router';
 import AddForm from '../addForm/AddForm';
 
-const RecordMaker = ({authService,youtubeService,recordRepository,ThumbnailFileInput}) => {    
+const RecordMaker = ({authService,youtubeService,
+            recordRepository,ThumbnailFileInput,
+            PicturesFileInput}) => {    
 
     // auth
     const history = useHistory();
@@ -225,7 +227,10 @@ const RecordMaker = ({authService,youtubeService,recordRepository,ThumbnailFileI
                         )
                     }
                     {
-                        page==='add'&& <AddForm createRecord={createRecord} ThumbnailFileInput={ThumbnailFileInput}/>
+                        page==='add'&& <AddForm 
+                                            createRecord={createRecord} 
+                                            ThumbnailFileInput={ThumbnailFileInput}
+                                            PicturesFileInput={PicturesFileInput}/>
                     }
                     
                 </div>
