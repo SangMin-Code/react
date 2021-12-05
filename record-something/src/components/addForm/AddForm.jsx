@@ -39,19 +39,19 @@ const AddForm = ({createRecord,ThumbnailFileInput,PicturesFileInput}) =>{
         <form ref={formRef} className={styles.form}>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >제목</label> 
-                    <input ref = {titleRef} type="text" name='title' />
+                    <input ref = {titleRef} className={styles.input}  type="text" name='title' />
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >태그</label> 
-                    <input ref = {tagsRef} type="text" name='tags'/>
+                    <input ref = {tagsRef} className={styles.input} type="text" name='tags'/>
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >내용</label> 
-                    <textarea ref={commentRef} name='comment'></textarea>
+                    <textarea ref={commentRef}  name='comment'></textarea>
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >주소</label> 
-                    <input ref = {addressRef} type="text" name="address"/>
+                    <input ref = {addressRef} className={styles.input} type="text" name="address"/>
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >썸네일</label> 
