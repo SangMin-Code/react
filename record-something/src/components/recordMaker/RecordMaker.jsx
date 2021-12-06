@@ -57,6 +57,7 @@ const RecordMaker = ({authService,youtubeService,
         }
         const stopSync = recordRepository.syncRecord(userId,records=>{
             setRecords(records);
+            console.log(records)
         })
         return ()=>stopSync();
     },[userId,recordRepository]);

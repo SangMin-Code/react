@@ -22,7 +22,6 @@ const ThumbnailInput = ({imageUploader,name,onFileChange}) => {
             url:uploaded.url,
           })
         setFileURL(uploaded.url)
-    
     }
     return (
         <div className={styles.container}>

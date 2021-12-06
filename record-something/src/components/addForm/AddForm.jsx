@@ -9,7 +9,7 @@ const AddForm = ({createRecord,ThumbnailFileInput,PicturesFileInput}) =>{
     const addressRef = useRef();
     const formRef = useRef(); 
     const [file, setFile] = useState({fileName:null, fileURL:null})
-    
+    const [pictures, setPictures] = useState([])
 
     const onSubmit = (event)=>{
         event.preventDefault();
@@ -22,6 +22,7 @@ const AddForm = ({createRecord,ThumbnailFileInput,PicturesFileInput}) =>{
                 address:addressRef.current.value||'',
                 fileName:file.fileName ||'',
                 fileURL:file.fileURL||'',
+                pictures:pictures||'',
         }
         // formRef.current.reset();
         // setFile({fileName:null,fileURL:null})
@@ -34,6 +35,12 @@ const AddForm = ({createRecord,ThumbnailFileInput,PicturesFileInput}) =>{
             fileURL:file.url
         })
     }
+
+    const onPicturesChange = (files)=>{
+            setPictures(files)
+    }
+
+
     
         return(
         <form ref={formRef} className={styles.form}>
@@ -60,7 +67,7 @@ const AddForm = ({createRecord,ThumbnailFileInput,PicturesFileInput}) =>{
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >사진</label> 
-                    <PicturesFileInput />
+                    <PicturesFileInput onPicturesChange={onPicturesChange}/>
             </div>
             <Button name={'Save'} onBtn={onSubmit} />
         </form>

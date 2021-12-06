@@ -3,7 +3,7 @@ import styles from './picturesInput.module.css';
 
 
 
-const PicturesInput = ({imageUploader,onFileChange}) => {
+const PicturesInput = ({imageUploader,onPicturesChange}) => {
 
     const [loading, setLoading] = useState(false);
     const [fileURLs, setFileURLs] =  useState([]);
@@ -11,12 +11,11 @@ const PicturesInput = ({imageUploader,onFileChange}) => {
 
     const onChange = async (event)=>{
         const uploaded =  await imageUploader.uploadfiles(event.target.files)
+        const uploadedURL = uploaded.map((file)=>({picture:file.url}))
         setFileURLs(uploaded)
-
-        uploaded.map((file)=>console.log(file.url))
-        // onFileChange({
-        //     name:uploaded.original_filename,
+        onPicturesChange(JSON.stringify(uploadedURL))
     }
+
 
     return(
         <div className={styles.container}>
