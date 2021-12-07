@@ -2,10 +2,10 @@ import { async } from '@firebase/util';
 import React, { useState,useRef } from 'react';
 import styles from './thumbnailInput.module.css';
 
-const ThumbnailInput = ({imageUploader,name,onFileChange}) => {
+const ThumbnailInput = ({imageUploader,name,onFileChange,file}) => {
 
     const [loading, setLoading] = useState(false);
-    const [fileURL, setFileURL] =  useState('default.png');
+    const [fileURL, setFileURL] =  useState(file ? file.fileURL :'default.png');
     const inputRef = useRef();
     const onButtonClick =(event)=>{
         event.preventDefault();

@@ -1,21 +1,24 @@
 import {React,useRef, useState} from 'react';
-import styles from './addForm.module.css';
+import styles from './editForm.module.css';
 import Button from '../Button/Button';
 
-const AddForm = ({createRecord,ThumbnailFileInput,PicturesFileInput}) =>{
+const EditForm = ({record,editRecord,onDelete,ThumbnailFileInput,PicturesFileInput}) => {
+
+
+    const {title, tags, comment, id,fileName,fileURL} =record
     const titleRef = useRef();
     const tagsRef = useRef();
     const commentRef = useRef();
     const addressRef = useRef();
     const formRef = useRef(); 
-    const [file, setFile] = useState({fileName:null, fileURL:null})
-    const [pictures, setPictures] = useState([])
+    const [file, setFile] = useState({fileName:fileName, fileURL:fileURL})
+    const [pictures, setPictures] = useState(record.pictures ? record.pictures : [])
 
-    const onSubmit = (event)=>{
+    const onSave = (event)=>{
         event.preventDefault();
         
         const record = {
-                id:Date.now(),
+                id:id,
                 title:titleRef.current.value||'',
                 tags:convertTags(tagsRef.current.value)||'',
                 comment:commentRef.current.value||'',
@@ -26,7 +29,7 @@ const AddForm = ({createRecord,ThumbnailFileInput,PicturesFileInput}) =>{
         }
         // formRef.current.reset();
         // setFile({fileName:null,fileURL:null})
-        createRecord(record)
+        editRecord(record)
     }
 
     const onFileChange =(file)=>{
@@ -40,36 +43,41 @@ const AddForm = ({createRecord,ThumbnailFileInput,PicturesFileInput}) =>{
             setPictures(files)
     }
 
+    const onRecordDelete = ()=>{
+        onDelete(record)
+    }
+
 
     
         return(
         <form ref={formRef} className={styles.form}>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >제목</label> 
-                    <input ref = {titleRef} className={styles.input}  type="text" name='title' />
+                    <input ref = {titleRef} className={styles.input}  type="text" name='title' defaultValue={title} />
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >태그</label> 
-                    <input ref = {tagsRef} className={styles.input} type="text" name='tags'/>
+                    <input ref = {tagsRef} className={styles.input} type="text" name='tags' defaultValue={ tags && (tags.reduce((tag,current)=>(tag+` #${current.tag}`),''))}/>
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >내용</label> 
-                    <textarea ref={commentRef}  name='comment'></textarea>
+                    <textarea ref={commentRef}  name='comment' defaultValue={comment}></textarea>
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >주소</label> 
-                    <input ref = {addressRef} className={styles.input} type="text" name="address"/>
+                    <input ref = {addressRef} className={styles.input} type="text" name="address" defaultValue={comment}/>
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >썸네일</label> 
-                    <ThumbnailFileInput name={file.fileName} onFileChange ={onFileChange} />
+                    <ThumbnailFileInput file={file} name={file.fileName} onFileChange ={onFileChange} />
 
             </div>
             <div className={styles.inputContainer}>
                     <label className={styles.label} >사진</label> 
-                    <PicturesFileInput onPicturesChange={onPicturesChange}/>
+                    <PicturesFileInput pictures={pictures} onPicturesChange={onPicturesChange}/>
             </div>
-            <Button name={'Save'} onBtn={onSubmit} />
+            <Button name={'Save'} onBtn={onSave} />
+            <Button name={'Delete'} onBtn={onRecordDelete} />
         </form>
 
     )
@@ -85,4 +93,4 @@ function convertTags (tags){
         return JSON.stringify(convert)
 }
 
-export default AddForm;
+export default EditForm

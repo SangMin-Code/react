@@ -1,17 +1,21 @@
 import React from 'react';
 import styles from './record.module.css'
-const Record = ({record,onTagClick}) => {
+const Record = ({record,onTagClick,onImgClick}) => {
 
     const {title, comment, fileURL, tags} = record
 
-    const onClick = (event)=>{
+    const TagClick = (event)=>{
         onTagClick(event.target.innerText)
+    }
+
+    const ImgClick = (event)=>{
+        onImgClick(record)
     }
 
     return (
         <div className={styles.container}>
             <div className={styles.imgContainer}>
-                <img src={fileURL} className = {styles.thumnail} alt="thumnail" />
+                <img src={fileURL} className = {styles.thumnail} alt="thumnail" onClick={ImgClick} />
             </div>
             <div className={styles.description}>
                 <h1 className={styles.title}>{title}</h1>
@@ -21,7 +25,7 @@ const Record = ({record,onTagClick}) => {
                      (<div 
                             className={styles.tag} 
                             key={key} 
-                            onClick={onClick}
+                            onClick={TagClick}
                         >
                         {tags[key].tag}
                     </div>))

@@ -3,17 +3,18 @@ import styles from './picturesInput.module.css';
 
 
 
-const PicturesInput = ({imageUploader,onPicturesChange}) => {
+const PicturesInput = ({imageUploader,onPicturesChange,pictures}) => {
+
 
     const [loading, setLoading] = useState(false);
-    const [fileURLs, setFileURLs] =  useState([]);
+    const [fileURLs, setFileURLs] =  useState(pictures ? pictures : []);
     const inputRef = useRef();
 
     const onChange = async (event)=>{
         const uploaded =  await imageUploader.uploadfiles(event.target.files)
-        const uploadedURL = uploaded.map((file)=>({picture:file.url}))
+        const uploadedURL = uploaded.map((file)=>({url:file.url}))
         setFileURLs(uploaded)
-        onPicturesChange(JSON.stringify(uploadedURL))
+        onPicturesChange(uploadedURL)
     }
 
 

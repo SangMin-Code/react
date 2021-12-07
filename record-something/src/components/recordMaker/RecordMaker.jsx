@@ -6,6 +6,7 @@ import Records from '../records/Records';
 import Youtube from '../youtube/Youtube';
 import { useHistory } from 'react-router';
 import AddForm from '../addForm/AddForm';
+import EditForm from '../editForm/EditForm';
 
 const RecordMaker = ({authService,youtubeService,
             recordRepository,ThumbnailFileInput,
@@ -25,6 +26,7 @@ const RecordMaker = ({authService,youtubeService,
     const [btnName, setBtnName] =useState('add');
 
     const [records, setRecords] = useState([]);
+    const [record,setRecord] =useState(null);
 
     const onLogout = useCallback(()=>{
         authService.logout();
@@ -41,13 +43,25 @@ const RecordMaker = ({authService,youtubeService,
         })
     },[authService,history,userId,userPhotoURL])
 
+
     //records
+    const onImgClick =(record)=>{
+        setRecord(record);
+        setPage('edit');
+        setBtnName('list');
+    }
+
     const onTagClick = (tag)=>{
         setSearchTag(tag);
     }
 
-    const createRecord = (record)=>{
+    const createOrUpdateRecord = (record)=>{
         recordRepository.saveReocrd(userId,record)
+        toList();
+    }
+
+    const onDelete = (record)=>{
+        recordRepository.removeReocrd(userId,record)
         toList();
     }
 
@@ -92,6 +106,7 @@ const RecordMaker = ({authService,youtubeService,
                         page==='list'&& (
                             <>
                             <Records 
+                                onImgClick = {onImgClick}
                                 onTagClick = {onTagClick} 
                                 records={records}
                                 
@@ -99,15 +114,24 @@ const RecordMaker = ({authService,youtubeService,
                             <Youtube 
                                 youtubeList={youtubeList} 
                                 searchTag ={searchTag} 
-                                records={records}/>
+                                />
                             </>
                         )
                     }
                     {
                         page==='add'&& <AddForm 
-                                            createRecord={createRecord} 
+                                            createRecord={createOrUpdateRecord} 
                                             ThumbnailFileInput={ThumbnailFileInput}
                                             PicturesFileInput={PicturesFileInput}/>
+                    }
+                    {
+                        page==='edit' && <EditForm
+                                            record = {record}
+                                            onDelete={onDelete}
+                                            editRecord = {createOrUpdateRecord}
+                                            ThumbnailFileInput={ThumbnailFileInput}
+                                            PicturesFileInput={PicturesFileInput}
+                        />
                     }
                     
                 </div>
