@@ -11,8 +11,10 @@ const PicturesInput = ({imageUploader,onPicturesChange,pictures}) => {
     const inputRef = useRef();
 
     const onChange = async (event)=>{
+        setLoading(true);
         const uploaded =  await imageUploader.uploadfiles(event.target.files)
         const uploadedURL = uploaded.map((file)=>({url:file.url}))
+        setLoading(false);
         setFileURLs(uploaded)
         onPicturesChange(uploadedURL)
     }
@@ -20,26 +22,32 @@ const PicturesInput = ({imageUploader,onPicturesChange,pictures}) => {
 
     return(
         <div className={styles.container}>
-            <input 
-                type="file" 
-                accept='image/*'
-                name="file" 
-                multiple
-                onChange ={onChange} />
-            <div className= {styles.previewContainer}>
-                {fileURLs && (
-                    fileURLs.map((file,index)=>(
-                        <div 
-                            className={styles.imgContainer}
-                            key = {index}>
-                            <img
-                                className ={styles.img} 
-                                src={file.url} 
-                                alt="picture" />
-                        </div>
-                    ))
-                )}
-            </div>
+            {loading && <div className={styles.loading}></div>}   
+            {!loading &&
+                (<>
+                    <input 
+                    ref = {inputRef}
+                    type="file" 
+                    accept='image/*'
+                    name="file" 
+                    multiple
+                    onChange ={onChange} />
+                <div className= {styles.previewContainer}>
+                    {fileURLs && (
+                        fileURLs.map((file,index)=>(
+                            <div 
+                                className={styles.imgContainer}
+                                key = {index}>
+                                <img
+                                    className ={styles.img} 
+                                    src={file.url} 
+                                    alt="pictures" />
+                            </div>
+                        ))
+                    )}
+                </div>
+                </>)
+            }
         </div>
     )
 }

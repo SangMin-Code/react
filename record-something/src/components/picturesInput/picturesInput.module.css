@@ -28,6 +28,24 @@
 	object-fit: fill;
 }
 
+.loading {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 50%;
+	border: 2px solid jejuGold;
+	border-top: 3px solid jejuOrange;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
 @media screen and (max-width: mediaQuery) {
 	.previewContainer {
 	}

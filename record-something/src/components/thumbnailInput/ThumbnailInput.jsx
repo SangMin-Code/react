@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import React, { useState,useRef } from 'react';
 import styles from './thumbnailInput.module.css';
 
