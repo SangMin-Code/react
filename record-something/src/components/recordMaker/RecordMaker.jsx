@@ -114,6 +114,7 @@ const RecordMaker = ({authService,youtubeService,
                             <Youtube 
                                 youtubeList={youtubeList} 
                                 searchTag ={searchTag} 
+                                onSearch={search}
                                 />
                             </>
                         )
